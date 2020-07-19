@@ -52,6 +52,4 @@ A changelog is generated here:
 
 ## License
 
-This software is available under the MIT licence. 
-
-* [License File](LICENSE.md)
+This is private software.
