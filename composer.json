@@ -1,0 +1,36 @@
+{
+    "name": "floor9design/plugin-core.eventim.co.uk",
+    "type": "library",
+    "description": "Classes to translate various API/feed data in DB objects for CMS usage",
+    "keywords": [
+        "floor9design",
+        "eventim"
+    ],
+    "homepage": "https://github.com/floor9design-ltd/plugin-core.eventim.co.uk",
+    "license": "Private",
+    "authors": [
+        {
+            "name": "Rick Morice",
+            "email": "rick@floor9design.com",
+            "homepage": "http://floor9design.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "ext-json": "*",
+        "php" : ">=7.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": ">=8.0",
+        "mockery/mockery": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Floor9design\\Eventim\\PluginCore\\": "src",
+            "Floor9design\\Eventim\\PluginCore\\Tests\\": "tests"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
