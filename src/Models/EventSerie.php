@@ -614,6 +614,23 @@ class EventSerie
         $this->setSearchText($object->searchText);
     }
 
+    public function getPostMetaData()
+    {
+        $properties = get_object_vars($this);
+        unset($properties['artists']);
+        unset($properties['esCategories']);
+        unset($properties['events']);;
+
+        // convert arrys
+        foreach($properties as $key => $property) {
+            if(is_array($property)) {
+                $properties[$key] = implode(',', $property);
+            }
+        }
+
+        return $properties;
+    }
+
     /**
      * processes the artists inside an EventSerie into an array of Artist objects
      *

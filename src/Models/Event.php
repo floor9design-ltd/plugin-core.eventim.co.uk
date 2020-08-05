@@ -1177,6 +1177,7 @@ class Event
         $this->setEventDateIso8601($object->eventDateIso8601);
         $this->setEventId($object->eventId);
         $this->setEventLink($object->eventLink);
+        $this->setEventName($object->eventName);
         $this->setEventProvince($object->eventProvince);
         $this->setEventSearchText($object->eventSearchText);
         $this->setEventStatus($object->eventStatus);
@@ -1210,6 +1211,25 @@ class Event
         $this->setVenueLatitude($object->venueLatitude);
         $this->setVenueLongitude($object->venueLongitude);
 
+    }
+
+    /**
+     * Returns an array of meta data elements
+     * @return array
+     */
+    public function getPostMetaData()
+    {
+        $properties = get_object_vars($this);
+        unset($properties['priceCategories']);
+
+        // convert arrys
+        foreach($properties as $key => $property) {
+            if(is_array($property)) {
+                $properties[$key] = implode(',', $property);
+            }
+        }
+
+        return $properties;
     }
 
     /**

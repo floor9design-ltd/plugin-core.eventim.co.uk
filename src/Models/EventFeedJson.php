@@ -62,9 +62,14 @@ class EventFeedJson extends EventFeed implements EventFeedInterface
         }
 
         // Naming convention json array named the individual object, so split up:
+
+        $event_serie = [];
+
         foreach($json_feed->eventserie as $event_serie_response) {
-            $event_serie = new EventSerie($event_serie_response);
+            $event_serie[] = new EventSerie($event_serie_response);
         }
+
+        $this->setEventSeries($event_serie);
 
         return true;
     }
