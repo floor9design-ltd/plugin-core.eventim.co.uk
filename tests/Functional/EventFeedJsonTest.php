@@ -7,7 +7,7 @@
  * php 7.3+
  *
  * @category  None
- * @package   Floor9design\LaravelRestfulApi\Tests\Functional
+ * @package   Floor9design\Eventim\PluginCore\Tests\Functional
  * @author    Rick Morice <rick@floor9design.com>
  * @copyright Floor9design Ltd
  * @license   MIT
@@ -19,7 +19,7 @@
  *
  */
 
-namespace Floor9design\LaravelRestfulApi\Tests\Functional;
+namespace Floor9design\Eventim\PluginCore\Tests\Functional;
 
 use Floor9design\Eventim\PluginCore\Models\EventFeedJson;
 use PHPUnit\Framework\TestCase;
@@ -31,7 +31,7 @@ use Exception;
  * Tests the EventFeedJson including populating its children.
  *
  * @category  None
- * @package   Floor9design\LaravelRestfulApi\Tests\Functional
+ * @package   Floor9design\Eventim\PluginCore\Tests\Functional
  * @author    Rick Morice <rick@floor9design.com>
  * @copyright Floor9design Ltd
  * @license   MIT
@@ -39,7 +39,7 @@ use Exception;
  * @link      https://github.com/floor9design-ltd/plugin-core.eventim.co.uk
  * @link      https://floor9design.com
  * @version   1.0
- * @see       \Floor9design\LaravelRestfulApi\Models\User
+ * @see       \Floor9design\Eventim\PluginCore\Models\EventSerie
  * @since     File available since Release 1.0
  */
 class EventFeedJsonTest extends TestCase
