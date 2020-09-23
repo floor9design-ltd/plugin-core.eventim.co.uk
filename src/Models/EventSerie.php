@@ -587,14 +587,14 @@ class EventSerie
 
         $this->setArtistRating($object->artistRating);
         $this->setEsBegin($object->esBegin);
-
         $this->setEsCategories(
             $this->processEsCategories($object->esCategories)
         );
-
         $this->SetEsEnd($object->esEnd);
         $this->setEsId($object->esId);
         $this->setEsInfo($object->esInfo);
+        $this->setEsLink($object->esLink);
+        $this->setEsName($object->esName);
         $this->setEsPicture($object->esPicture);
         $this->setEsPictureBig($object->esPictureBig);
         $this->setEsPictureSmall($object->esPictureSmall);
@@ -617,11 +617,13 @@ class EventSerie
     public function getPostMetaData()
     {
         $properties = get_object_vars($this);
+
+        // don't process the children : they're dealt with elsewhere
         unset($properties['artists']);
         unset($properties['esCategories']);
         unset($properties['events']);;
 
-        // convert arrys
+        // convert arrays
         foreach($properties as $key => $property) {
             if(is_array($property)) {
                 $properties[$key] = implode(',', $property);

@@ -48,7 +48,6 @@ class EventFeedJson extends EventFeed implements EventFeedInterface
      */
     public function processFeed(): bool
     {
-
         $json_feed = json_decode($this->getFeed());
 
         // Badly formed json
