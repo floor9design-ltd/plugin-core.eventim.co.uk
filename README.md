@@ -1,5 +1,16 @@
 # plugin-core.eventim.co.uk
 
+[![Latest Version](https://img.shields.io/github/v/release/floor9design-ltd/plugin-core.eventim.co.uk?include_prereleases&style=plastic)](https://github.com/floor9design-ltd/plugin-core.eventim.co.uk/releases)
+[![Packagist](https://img.shields.io/packagist/v/floor9design/plugin-core.eventim.co.uk?style=plastic)](https://packagist.org/packages/floor9design/plugin-core.eventim.co.uk)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=plastic)](LICENCE.md)
+
+[![Build Status](https://img.shields.io/travis/floor9design-ltd/plugin-core.eventim.co.uk?style=plastic)](https://travis-ci.org/github/floor9design-ltd/plugin-core.eventim.co.uk)
+[![Build Status](https://img.shields.io/codecov/c/github/floor9design-ltd/plugin-core.eventim.co.uk?style=plastic)](https://codecov.io/gh/floor9design-ltd/plugin-core.eventim.co.uk)
+
+[![Github Downloads](https://img.shields.io/github/downloads/floor9design-ltd/plugin-core.eventim.co.uk/total?style=plastic)](https://github.com/floor9design-ltd/plugin-core.eventim.co.uk)
+[![Packagist Downloads](https://img.shields.io/packagist/dt/floor9design/plugin-core.eventim.co.uk?style=plastic)](https://packagist.org/packages/floor9design/plugin-core.eventim.co.uk)
+
+
 ## Introduction
 
 This offers the core functionality to translate received data from Eventim into well-formed object ready for storage in 
