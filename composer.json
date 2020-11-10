@@ -7,7 +7,7 @@
         "eventim"
     ],
     "homepage": "https://github.com/floor9design-ltd/plugin-core.eventim.co.uk",
-    "license": "Private",
+    "license": "MIT",
     "authors": [
         {
             "name": "Rick Morice",
