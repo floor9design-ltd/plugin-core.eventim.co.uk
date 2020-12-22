@@ -128,6 +128,11 @@ class Event
     /**
      * @var
      */
+    protected $eventSeriesImage;
+
+    /**
+     * @var
+     */
     protected $eventTime;
 
     /**
@@ -164,6 +169,11 @@ class Event
      * @var
      */
     protected $fanticketImage;
+
+    /**
+     * @var
+     */
+    protected $overrideImage;
 
     /**
      * @var
@@ -396,7 +406,7 @@ class Event
      * @see $eventCityId
      *
      */
-    public function setEventCityId($eventCityId)
+    public function setEventCityId($eventCityId): Event
     {
         $this->eventCityId = $eventCityId;
         return $this;
@@ -575,6 +585,29 @@ class Event
     public function setEventSearchText($eventSearchText)
     {
         $this->eventSearchText = $eventSearchText;
+        return $this;
+    }
+
+    /**
+     * @return null|string
+     * @see $eventSeriesImage
+     * @see getImage()
+     *
+     */
+    public function getEventSeriesImage()
+    {
+        return $this->eventSeriesImage;
+    }
+
+    /**
+     * @param string $eventSeriesImage
+     * @return Event
+     * @see $eventSeriesImage
+     *
+     */
+    public function setEventSeriesImage(string $eventSeriesImage)
+    {
+        $this->eventSeriesImage = $eventSeriesImage;
         return $this;
     }
 
@@ -975,6 +1008,29 @@ class Event
     }
 
     /**
+     * @return mixed
+     * @see $overrideImage
+     * @see getImage()
+     *
+     */
+    public function getOverrideImage()
+    {
+        return $this->overrideImage;
+    }
+
+    /**
+     * @param string $overrideImage
+     * @return Event
+     * @see $fanticketImage
+     *
+     */
+    public function setOverrideImage(string $overrideImage)
+    {
+        $this->overrideImage = $overrideImage;
+        return $this;
+    }
+
+    /**
      * @return array
      * @see $priceCategories
      *
@@ -1180,6 +1236,11 @@ class Event
         $this->setEventName($object->eventName);
         $this->setEventProvince($object->eventProvince);
         $this->setEventSearchText($object->eventSearchText);
+
+        if($object->eventSeriesImage ?? false) {
+            $this->setEventSeriesImage($object->eventSeriesImage);
+        }
+
         $this->setEventStatus($object->eventStatus);
         $this->setEventStreet($object->eventStreet);
         $this->setEventTime($object->eventTime);
@@ -1199,9 +1260,15 @@ class Event
         $this->setOnsaleDate($object->onsaleDate);
         $this->setOnsaleTime($object->onsaleTime);
 
-        $this->setPriceCategories(
-            $this->processPriceCategories($object->priceCategories)
-        );
+        if($object->overrideImage ?? false) {
+            $this->setOverrideImage($object->overrideImage);
+        }
+
+        if($object->priceCategories ?? false) {
+            $this->setPriceCategories(
+                $this->processPriceCategories($object->priceCategories)
+            );
+        }
 
         $this->setPromoterId($object->promoterId);
         $this->setOnlyBookableInSP($object->onlyBookableInSP);
@@ -1215,9 +1282,12 @@ class Event
 
     /**
      * Returns an array of meta data elements
+     *
+     * Used to smart-convert the object into a dumb array
+     *
      * @return array
      */
-    public function getPostMetaData()
+    public function getEventData(): array
     {
         $properties = get_object_vars($this);
         unset($properties['priceCategories']);
@@ -1230,6 +1300,32 @@ class Event
         }
 
         return $properties;
+    }
+
+    /**
+     * Attempts to load an image in a smart way.
+     * This is the preferred way to load an event's image
+     *
+     * Firstly attempts to load overrideImage,
+     * Then attempts to load from the parent object
+     *
+     * @see $overrideImage
+     * @see $eventSeriesImage
+     *
+     * @param string $default
+     * @return string
+     */
+    public function getImage(string $default = ''): string
+    {
+        if($this->getOverrideImage()) {
+            $image = $this->getOverrideImage();
+        } elseif($this->getEventSeriesImage()) {
+            $image = $this->getEventSeriesImage();
+        } else {
+            $image = $default;
+        }
+
+        return $default;
     }
 
     /**
@@ -1248,4 +1344,5 @@ class Event
 
         return $processed_price_categories;
     }
+
 }
