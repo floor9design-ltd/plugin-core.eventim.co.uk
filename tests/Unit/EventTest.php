@@ -22,6 +22,9 @@
 namespace Floor9design\Eventim\PluginCore\Tests\Unit;
 
 use Floor9design\Eventim\PluginCore\Models\Event;
+use Floor9design\Eventim\PluginCore\Models\EventSerie;
+use Floor9design\TestDataGenerator\Generator;
+use Floor9design\TestDataGenerator\GeneratorException;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -43,14 +46,33 @@ use PHPUnit\Framework\TestCase;
  */
 class EventTest extends TestCase
 {
+    /**
+     * @var Generator
+     */
+    var $generator;
 
-    public function testBasicAccessorsTest()
+    /**
+     * Set up the generator
+     */
+    public function setUp(): void
+    {
+        $this->generator = new Generator();
+    }
+
+    /**
+     * Test the basic accessors
+     *
+     * @throws GeneratorException
+     */
+    public function testBasicAccessors()
     {
         $test_object_array = $this->createTestObjectArray();
+
+        // __construct automatically sets all properties
         $event = new Event($test_object_array['object']);
 
+        // test all gets
         foreach ($test_object_array['items'] as $item) {
-
             // can't use arrays in function context
             $property = $item['property'];
             $method = $item['method'];
@@ -62,6 +84,102 @@ class EventTest extends TestCase
         }
     }
 
+    /**
+     * Test the more advanced accessors
+     */
+    public function testAdvancedAccessors()
+    {
+        $test_object_array = $this->createTestObjectArray();
+        $event = new Event($test_object_array['object']);
+
+        // create a stubbed EventSerie object:
+        $event_serie_stub = $this->createStub(EventSerie::class);
+
+        // Configure the stub.
+        $test_string = $this->generator->randomImageUrl();
+        $event_serie_stub
+            ->method('getEsPicture')
+            ->willReturn($test_string);
+
+        // eventSerie
+        $event->setEventSerie($event_serie_stub);
+        $this->assertEquals($event_serie_stub, $event->getEventSerie());
+
+        // eventSeriesImage
+        $this->assertEquals($event->getEventSerieImage(), $test_string);
+    }
+
+    /**
+     * Tests Event::getImage()
+     */
+    public function testGetImage()
+    {
+        $test_object_array = $this->createTestObjectArray();
+        $event = new Event($test_object_array['object']);
+
+        // create a stubbed EventSerie object:
+        $event_serie_stub = $this->createStub(EventSerie::class);
+
+        // Configure the stub.
+        $test_image = $this->generator->randomImageUrl();
+        $event_serie_stub
+            ->method('getEsPicture')
+            ->willReturn($test_image);
+        $event->setEventSerie($event_serie_stub);
+
+        // eventSeriesImage
+        $this->assertEquals($test_image, $event->getImage());
+
+        // Now test overwrite:
+        $test_image = $this->generator->randomImageUrl();
+        $event->setOverrideImage($test_image);
+
+        $this->assertEquals($event->getImage(), $test_image);
+
+        // Now test null:
+        $event = new Event($test_object_array['object']);
+        $event->setEventSerie(null);
+
+        $this->assertEquals($event->getImage(), '');
+    }
+
+    /**
+     * Tests Event::getEventData()
+     */
+    public function testGetEventData()
+    {
+        $test_object_array = $this->createTestObjectArray();
+        $event = new Event($test_object_array['object']);
+        $event_array = $event->getEventData();
+
+        // accessors already done, and full mapping is tested elsewhere - so just check key output types:
+
+        // array
+        $this->assertEquals(implode(',', $event->getArtistIds()), $event_array['artistIds']);
+
+        // string
+        $this->assertEquals($event->getArtistNames(), $event_array['artistNames']);
+
+        // bool
+        $this->assertEquals($event->getDeliverable(), $event_array['deliverable']);
+
+        // int
+        $this->assertEquals($event->getEventCityId(), $event_array['eventCityId']);
+
+        // int
+        $this->assertEquals($event->getMaxPrice(), $event_array['maxPrice']);
+
+    }
+
+
+    // setup
+
+    /**
+     * Creates a test array for populating an example class
+     *
+     * @return array
+     * @throws GeneratorException
+     */
     private function createTestObjectArray(): array
     {
         $object = new \StdClass();
@@ -83,7 +201,12 @@ class EventTest extends TestCase
                 'ticketStock' => 'getTicketStock'
             ] as $property => $method
         ) {
-            $test_id = random_int(1, 1000);
+            try {
+                $test_id = $this->generator->randomInteger(5, 100);
+            } catch (GeneratorException $e) {
+                throw new GeneratorException($e->getMessage());
+            }
+
             $object->$property = $test_id;
 
             $array['items'][$property]['property'] = $property;
@@ -97,11 +220,11 @@ class EventTest extends TestCase
                 'includedEventIDs' => 'getIncludedEventIDs'
             ] as $property => $method
         ) {
-            $test_ids = [
-                random_int(1, 1000),
-                random_int(1, 1000),
-                random_int(1, 1000),
-            ];
+            try {
+                $test_ids = $this->generator->randomIntegerArray(5, 100, 4);
+            } catch (GeneratorException $e) {
+                throw new GeneratorException($e->getMessage());
+            }
             $object->$property = $test_ids;
 
             $array['items'][$property]['property'] = $property;
@@ -126,7 +249,7 @@ class EventTest extends TestCase
                 'linkEventUrl' => 'getLinkEventUrl'
             ] as $property => $method
         ) {
-            $test_string = md5(rand());
+            $test_string = $this->generator->randomString();
             $object->$property = $test_string;
 
             $array['items'][$property]['property'] = $property;
@@ -143,7 +266,7 @@ class EventTest extends TestCase
                 'onsaleDate' => 'getOnsaleDate'
             ] as $property => $method
         ) {
-            $test_date = date('Y-m-d');
+            $test_date = $this->generator->randomMySqlDate();
             $object->$property = $test_date;
 
             $array['items'][$property]['property'] = $property;
@@ -157,7 +280,7 @@ class EventTest extends TestCase
                 'onsaleTime' => 'getOnsaleTime'
             ] as $property => $method
         ) {
-            $test_date = date('H:i:s');
+            $test_date = $this->generator->randomMySqlDate('H:i:s');
             $object->$property = $test_date;
 
             $array['items'][$property]['property'] = $property;
@@ -173,8 +296,7 @@ class EventTest extends TestCase
                 'willcall' => 'getWillcall'
             ] as $property => $method
         ) {
-            $test_bool = random_int(0, 1);
-            $object->$property = $test_bool;
+            $object->$property = $this->generator->randomBoolean();
 
             $array['items'][$property]['property'] = $property;
             $array['items'][$property]['method'] = $method;
@@ -187,7 +309,7 @@ class EventTest extends TestCase
                 'minPrice' => 'getMinPrice'
             ] as $property => $method
         ) {
-            $test_id = random_int(1000, 20000) / 10;
+            $test_id = $this->generator->randomCurrency();
             $object->$property = $test_id;
 
             $array['items'][$property]['property'] = $property;
@@ -201,68 +323,15 @@ class EventTest extends TestCase
                 'venueLongitude' => 'getVenueLongitude'
             ] as $property => $method
         ) {
-            $test_id = random_int(1000, 20000) / random_int(1000, 20000);
-            $object->$property = $test_id;
+            $test_float = $this->generator->randomFloat();
+            $object->$property = $test_float;
 
             $array['items'][$property]['property'] = $property;
             $array['items'][$property]['method'] = $method;
         }
 
-        /*
-$event->setArtistNames($object->artistNames);
-$event->setDateRangeEnd($object->dateRangeEnd);
-$event->setDateRangeStart($object->dateRangeStart);
-$event->setDeliverable($object->deliverable);
-$event->setEventCity($object->eventCity);
-$event->setEventCityId($object->eventCityId);
-$event->setEventCountry($object->eventCountry);
-$event->setEventDate($object->eventDate);
-$event->setEventDateIso8601($object->eventDateIso8601);
-$event->setEventId($object->eventId);
-$event->setEventLink($object->eventLink);
-$event->setEventName($object->eventName);
-$event->setEventProvince($object->eventProvince);
-$event->setEventSearchText($object->eventSearchText);
-
-if($object->eventSeriesImage ?? false) {
-    $event->setEventSeriesImage($object->eventSeriesImage);
-}
-
-$event->setEventStatus($object->eventStatus);
-$event->setEventStreet($object->eventStreet);
-$event->setEventTime($object->eventTime);
-$event->setEventType($object->eventType);
-$event->setEventVenue($object->eventVenue);
-$event->setEventVenueGroupId($object->eventVenueGroupId);
-$event->setEventVenueId($object->eventVenueId);
-$event->setEventZip($object->eventZip);
-$event->setEvoLink($object->evoLink);
-$event->setFanticketImage($object->fanticketImage);
-$event->setIncludedEventIDs($object->includedEventIDs);
-$event->setLinkEventUrl($object->linkEventUrl);
-$event->setMaxPrice($object->maxPrice);
-$event->setMinPrice($object->minPrice);
-$event->setNumberOfEvents($object->numberOfEvents);
-$event->setNumberOfVenues($object->numberOfVenues);
-$event->setOnsaleDate($object->onsaleDate);
-$event->setOnsaleTime($object->onsaleTime);
-
-if($object->overrideImage ?? false) {
-    $event->setOverrideImage($object->overrideImage);
-}
-
-$event->setPriceCategories(
-    $event->processPriceCategories($object->priceCategories)
-);
-
-$event->setPromoterId($object->promoterId);
-$event->setOnlyBookableInSP($object->onlyBookableInSP);
-$event->setTicketStock($object->ticketStock);
-$event->setTicketdirect($object->ticketdirect);
-$event->setWillcall($object->willcall);
-$event->setVenueLatitude($object->venueLatitude);
-$event->setVenueLongitude($object->venueLongitude);
-*/
+        // @todo once child objects are made:
+        // EventSerie, PriceCategory
 
         $array['object'] = $object;
 

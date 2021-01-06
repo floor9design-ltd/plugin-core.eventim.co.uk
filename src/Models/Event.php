@@ -26,7 +26,7 @@ namespace Floor9design\Eventim\PluginCore\Models;
  * Models the Event collection
  *
  * @category  None
- * @package   Floor9design\LaravelRestfulApi\Tests\Unit
+ * @package   Floor9design\Eventim\PluginCore\Tests\Unit
  * @author    Rick Morice <rick@floor9design.com>
  * @copyright Floor9design Ltd
  * @license   Private software
@@ -41,979 +41,948 @@ class Event
     // Properties
 
     /**
-     * @var
+     * @var null|array
      */
     protected $artistIds = [];
 
     /**
-     * @var
+     * @var string|null
      */
     protected $artistNames;
 
     /**
-     * @var
+     * @var string|null
      */
     protected $dateRangeEnd;
 
     /**
-     * @var
+     * @var string|null
      */
     protected $dateRangeStart;
 
     /**
-     * @var
+     * @var bool|null
      */
     protected $deliverable;
 
     /**
-     * @var
+     * @var string|null
      */
     protected $eventCity;
 
     /**
-     * @var
+     * @var int|null
      */
     protected $eventCityId;
 
     /**
-     * @var
+     * @var string|null
      */
     protected $eventCountry;
 
     /**
-     * @var
+     * @var string|null
      */
     protected $eventDate;
 
     /**
-     * @var
+     * @var string|null
      */
     protected $eventDateIso8601;
 
     /**
-     * @var
+     * @var int|null
      */
     protected $eventId;
 
     /**
-     * @var
+     * @var string|null
      */
     protected $eventLink;
 
     /**
-     * @var
+     * @var string|null
      */
     protected $eventName;
 
     /**
-     * @var
+     * @var string|null
      */
     protected $eventProvince;
 
     /**
-     * @var
+     * @var string|null
      */
     protected $eventSearchText;
 
     /**
-     * @var
+     * @var EventSerie
+     */
+    protected $event_serie;
+
+    /**
+     * @var int|null
      */
     protected $eventStatus;
 
     /**
-     * @var
+     * @var string|null
      */
     protected $eventStreet;
 
     /**
-     * @var
-     */
-    protected $eventSeriesImage;
-
-    /**
-     * @var
+     * @var string|null
      */
     protected $eventTime;
 
     /**
-     * @var
+     * @var int|null
      */
     protected $eventType;
 
     /**
-     * @var
+     * @var string|null
      */
     protected $eventVenue;
 
     /**
-     * @var
+     * @var int|null
      */
     protected $eventVenueGroupId;
 
     /**
-     * @var
+     * @var int|null
      */
     protected $eventVenueId;
 
     /**
-     * @var
+     * @var string|null
      */
     protected $eventZip;
 
     /**
-     * @var
+     * @var string|null
      */
     protected $evoLink;
 
     /**
-     * @var
+     * @var string|null
      */
     protected $fanticketImage;
 
     /**
-     * @var
-     */
-    protected $overrideImage;
-
-    /**
-     * @var
+     * @var array|null
      */
     protected $includedEventIDs;
 
     /**
-     * @var
+     * @var string|null
      */
     protected $linkEventUrl;
 
     /**
-     * @var
+     * @var float|null
      */
     protected $maxPrice;
 
     /**
-     * @var
+     * @var float|null
      */
     protected $minPrice;
 
     /**
-     * @var
+     * @var int|null
      */
     protected $numberOfEvents;
 
     /**
-     * @var
+     * @var int|null
      */
     protected $numberOfVenues;
 
     /**
-     * @var
+     * @var string|null
      */
     protected $onsaleDate;
 
     /**
-     * @var
+     * @var string|null
      */
     protected $onsaleTime;
 
     /**
-     * @var
+     * @var string|null
+     */
+    protected $overrideImage;
+
+    /**
+     * @var array Array of Floor9design\Eventim\PluginCore\Models\PriceCategory objects
      */
     protected $priceCategories = [];
 
     /**
-     * @var
+     * @var int|null
      */
     protected $promoterId;
 
     /**
-     * @var
+     * @var bool|null
      */
     protected $onlyBookableInSP;
 
     /**
-     * @var
+     * @var int|null
      */
     protected $ticketStock;
 
     /**
-     * @var
+     * @var bool|null
      */
     protected $ticketdirect;
 
     /**
-     * @var
+     * @var bool|null
      */
     protected $willcall;
 
     /**
-     * @var
+     * @var float|null
      */
     protected $venueLatitude;
 
     /**
-     * @var
+     * @var float|null
      */
     protected $venueLongitude;
 
     // Accessors
 
-
     /**
-     * @return mixed
+     * @return array|null
      * @see $artistIds
      *
      */
-    public function getArtistIds()
+    public function getArtistIds(): ?array
     {
         return $this->artistIds;
     }
 
     /**
-     * @param mixed $artistIds
+     * @param array|null $artistIds
      * @return Event
      * @see $artistIds
-     *
      */
-    public function setArtistIds($artistIds)
+    public function setArtistIds(?array $artistIds): Event
     {
         $this->artistIds = $artistIds;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string|null
      * @see $artistNames
      *
      */
-    public function getArtistNames()
+    public function getArtistNames(): ?string
     {
         return $this->artistNames;
     }
 
     /**
-     * @param mixed $artistNames
+     * @param string|null $artistNames
      * @return Event
      * @see $artistNames
      *
      */
-    public function setArtistNames($artistNames)
+    public function setArtistNames(?string $artistNames): Event
     {
         $this->artistNames = $artistNames;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string|null
      * @see $dateRangeEnd
      *
      */
-    public function getDateRangeEnd()
+    public function getDateRangeEnd(): ?string
     {
         return $this->dateRangeEnd;
     }
 
     /**
-     * @param mixed $dateRangeEnd
+     * @param string|null $dateRangeEnd
      * @return Event
      * @see $dateRangeEnd
      *
      */
-    public function setDateRangeEnd($dateRangeEnd)
+    public function setDateRangeEnd($dateRangeEnd): Event
     {
         $this->dateRangeEnd = $dateRangeEnd;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string|null
      * @see $dateRangeStart
      *
      */
-    public function getDateRangeStart()
+    public function getDateRangeStart(): ?string
     {
         return $this->dateRangeStart;
     }
 
     /**
-     * @param mixed $dateRangeStart
+     * @param string|null $dateRangeStart
      * @return Event
      * @see $dateRangeStart
      *
      */
-    public function setDateRangeStart($dateRangeStart)
+    public function setDateRangeStart(?string $dateRangeStart): Event
     {
         $this->dateRangeStart = $dateRangeStart;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return bool|null
      * @see $deliverable
      *
      */
-    public function getDeliverable()
+    public function getDeliverable(): ?bool
     {
         return $this->deliverable;
     }
 
     /**
-     * @param mixed $deliverable
+     * @param bool|null $deliverable
      * @return Event
      * @see $deliverable
-     *
      */
-    public function setDeliverable($deliverable)
+    public function setDeliverable(?bool $deliverable): Event
     {
         $this->deliverable = $deliverable;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string|null
      * @see $eventCity
      *
      */
-    public function getEventCity()
+    public function getEventCity(): ?string
     {
         return $this->eventCity;
     }
 
     /**
-     * @param mixed $eventCity
+     * @param string|null $eventCity
      * @return Event
      * @see $eventCity
-     *
      */
-    public function setEventCity($eventCity)
+    public function setEventCity(?string $eventCity): Event
     {
         $this->eventCity = $eventCity;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return int|null
      * @see $eventCityId
      *
      */
-    public function getEventCityId()
+    public function getEventCityId(): ?int
     {
         return $this->eventCityId;
     }
 
     /**
-     * @param mixed $eventCityId
+     * @param int|null $eventCityId
      * @return Event
      * @see $eventCityId
-     *
      */
-    public function setEventCityId($eventCityId): Event
+    public function setEventCityId(?int $eventCityId): Event
     {
         $this->eventCityId = $eventCityId;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string|null
      * @see $eventCountry
      *
      */
-    public function getEventCountry()
+    public function getEventCountry(): ?string
     {
         return $this->eventCountry;
     }
 
     /**
-     * @param mixed $eventCountry
+     * @param string|null $eventCountry
      * @return Event
      * @see $eventCountry
      *
      */
-    public function setEventCountry($eventCountry)
+    public function setEventCountry($eventCountry): Event
     {
         $this->eventCountry = $eventCountry;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string|null
      * @see $eventDate
      *
      */
-    public function getEventDate()
+    public function getEventDate(): ?string
     {
         return $this->eventDate;
     }
 
     /**
-     * @param mixed $eventDate
+     * @param string|null $eventDate
      * @return Event
      * @see $eventDate
-     *
      */
-    public function setEventDate($eventDate)
+    public function setEventDate(?string $eventDate): Event
     {
         $this->eventDate = $eventDate;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string|null
      * @see $eventDateIso8601
      *
      */
-    public function getEventDateIso8601()
+    public function getEventDateIso8601(): ?string
     {
         return $this->eventDateIso8601;
     }
 
     /**
-     * @param mixed $eventDateIso8601
+     * @param string|null $eventDateIso8601
      * @return Event
      * @see $eventDateIso8601
      *
      */
-    public function setEventDateIso8601($eventDateIso8601)
+    public function setEventDateIso8601($eventDateIso8601): Event
     {
         $this->eventDateIso8601 = $eventDateIso8601;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return int|null
      * @see $eventId
      *
      */
-    public function getEventId()
+    public function getEventId(): ?int
     {
         return $this->eventId;
     }
 
     /**
-     * @param mixed $eventId
+     * @param int|null $eventId
      * @return Event
      * @see $eventId
-     *
      */
-    public function setEventId($eventId)
+    public function setEventId(?int $eventId): Event
     {
         $this->eventId = $eventId;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string|null
      * @see $eventLink
      *
      */
-    public function getEventLink()
+    public function getEventLink(): ?string
     {
         return $this->eventLink;
     }
 
     /**
-     * @param mixed $eventLink
+     * @param string|null $eventLink
      * @return Event
      * @see $eventLink
-     *
      */
-    public function setEventLink($eventLink)
+    public function setEventLink(?string $eventLink): Event
     {
         $this->eventLink = $eventLink;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string|null
      * @see $eventName
      *
      */
-    public function getEventName()
+    public function getEventName(): ?string
     {
         return $this->eventName;
     }
 
     /**
-     * @param mixed $eventName
+     * @param string|null $eventName
      * @return Event
      * @see $eventName
-     *
      */
-    public function setEventName($eventName)
+    public function setEventName(?string $eventName): Event
     {
         $this->eventName = $eventName;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string|null
      * @see $eventProvince
      *
      */
-    public function getEventProvince()
+    public function getEventProvince(): ?string
     {
         return $this->eventProvince;
     }
 
     /**
-     * @param mixed $eventProvince
+     * @param string|null $eventProvince
      * @return Event
      * @see $eventProvince
-     *
      */
-    public function setEventProvince($eventProvince)
+    public function setEventProvince(?string $eventProvince): Event
     {
         $this->eventProvince = $eventProvince;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string|null
      * @see $eventSearchText
      *
      */
-    public function getEventSearchText()
+    public function getEventSearchText(): ?string
     {
         return $this->eventSearchText;
     }
 
     /**
-     * @param mixed $eventSearchText
+     * @param string|null $eventSearchText
      * @return Event
      * @see $eventSearchText
-     *
      */
-    public function setEventSearchText($eventSearchText)
+    public function setEventSearchText(?string $eventSearchText): Event
     {
         $this->eventSearchText = $eventSearchText;
         return $this;
     }
 
     /**
-     * @return null|string
-     * @see $eventSeriesImage
-     * @see getImage()
+     * @return EventSerie|null
+     * @see $event_serie
      *
      */
-    public function getEventSeriesImage()
+    public function getEventSerie(): ?EventSerie
     {
-        return $this->eventSeriesImage;
+        return $this->event_serie;
     }
 
     /**
-     * @param string $eventSeriesImage
+     * @param EventSerie|null $event_serie
      * @return Event
-     * @see $eventSeriesImage
-     *
+     * @see $eventSerie
      */
-    public function setEventSeriesImage(string $eventSeriesImage)
+    public function setEventSerie(?EventSerie $event_serie): Event
     {
-        $this->eventSeriesImage = $eventSeriesImage;
+        $this->event_serie = $event_serie;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return int|null
      * @see $eventStatus
      *
      */
-    public function getEventStatus()
+    public function getEventStatus(): ?int
     {
         return $this->eventStatus;
     }
 
     /**
-     * @param mixed $eventStatus
+     * @param int|null $eventStatus
      * @return Event
      * @see $eventStatus
-     *
      */
-    public function setEventStatus($eventStatus)
+    public function setEventStatus(?int $eventStatus): Event
     {
         $this->eventStatus = $eventStatus;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string|null
      * @see $eventStreet
      *
      */
-    public function getEventStreet()
+    public function getEventStreet(): ?string
     {
         return $this->eventStreet;
     }
 
     /**
-     * @param mixed $eventStreet
+     * @param string|null $eventStreet
      * @return Event
      * @see $eventStreet
-     *
      */
-    public function setEventStreet($eventStreet)
+    public function setEventStreet(?string $eventStreet): Event
     {
         $this->eventStreet = $eventStreet;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string|null
      * @see $eventTime
      *
      */
-    public function getEventTime()
+    public function getEventTime(): ?string
     {
         return $this->eventTime;
     }
 
     /**
-     * @param mixed $eventTime
+     * @param string|null $eventTime
      * @return Event
      * @see $eventTime
-     *
      */
-    public function setEventTime($eventTime)
+    public function setEventTime(?string $eventTime): Event
     {
         $this->eventTime = $eventTime;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return int|null
      * @see $eventType
      *
      */
-    public function getEventType()
+    public function getEventType(): ?int
     {
         return $this->eventType;
     }
 
     /**
-     * @param mixed $eventType
+     * @param int|null $eventType
      * @return Event
      * @see $eventType
-     *
      */
-    public function setEventType($eventType)
+    public function setEventType(?int $eventType): Event
     {
         $this->eventType = $eventType;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string|null
      * @see $eventVenue
      *
      */
-    public function getEventVenue()
+    public function getEventVenue(): ?string
     {
         return $this->eventVenue;
     }
 
     /**
-     * @param mixed $eventVenue
+     * @param string|null $eventVenue
      * @return Event
      * @see $eventVenue
-     *
      */
-    public function setEventVenue($eventVenue)
+    public function setEventVenue(?string $eventVenue): Event
     {
         $this->eventVenue = $eventVenue;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return int|null
      * @see $eventVenueGroupId
      *
      */
-    public function getEventVenueGroupId()
+    public function getEventVenueGroupId(): ?int
     {
         return $this->eventVenueGroupId;
     }
 
     /**
-     * @param mixed $eventVenueGroupId
+     * @param int|null $eventVenueGroupId
      * @return Event
      * @see $eventVenueGroupId
-     *
      */
-    public function setEventVenueGroupId($eventVenueGroupId)
+    public function setEventVenueGroupId(?int $eventVenueGroupId): Event
     {
         $this->eventVenueGroupId = $eventVenueGroupId;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return int|null
      * @see $eventVenueId
      *
      */
-    public function getEventVenueId()
+    public function getEventVenueId(): ?int
     {
         return $this->eventVenueId;
     }
 
     /**
-     * @param mixed $eventVenueId
+     * @param int|null $eventVenueId
      * @return Event
      * @see $eventVenueId
-     *
      */
-    public function setEventVenueId($eventVenueId)
+    public function setEventVenueId(?int $eventVenueId): Event
     {
         $this->eventVenueId = $eventVenueId;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string|null
      * @see $eventZip
      *
      */
-    public function getEventZip()
+    public function getEventZip(): ?string
     {
         return $this->eventZip;
     }
 
     /**
-     * @param mixed $eventZip
+     * @param string|null $eventZip
      * @return Event
      * @see $eventZip
-     *
      */
-    public function setEventZip($eventZip)
+    public function setEventZip(?string $eventZip): Event
     {
         $this->eventZip = $eventZip;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string|null
      * @see $evoLink
      *
      */
-    public function getEvoLink()
+    public function getEvoLink(): ?string
     {
         return $this->evoLink;
     }
 
     /**
-     * @param mixed $evoLink
+     * @param string|null $evoLink
      * @return Event
      * @see $evoLink
-     *
      */
-    public function setEvoLink($evoLink)
+    public function setEvoLink(?string $evoLink): Event
     {
         $this->evoLink = $evoLink;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string|null
      * @see $fanticketImage
      *
      */
-    public function getFanticketImage()
+    public function getFanticketImage(): ?string
     {
         return $this->fanticketImage;
     }
 
     /**
-     * @param mixed $fanticketImage
+     * @param string|null $fanticketImage
      * @return Event
      * @see $fanticketImage
-     *
      */
-    public function setFanticketImage($fanticketImage)
+    public function setFanticketImage(?string $fanticketImage): Event
     {
         $this->fanticketImage = $fanticketImage;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return array|null
      * @see $includedEventIDs
      *
      */
-    public function getIncludedEventIDs()
+    public function getIncludedEventIDs(): ?array
     {
         return $this->includedEventIDs;
     }
 
     /**
-     * @param mixed $includedEventIDs
+     * @param array|null $includedEventIDs
      * @return Event
      * @see $includedEventIDs
-     *
      */
-    public function setIncludedEventIDs($includedEventIDs)
+    public function setIncludedEventIDs(?array $includedEventIDs): Event
     {
         $this->includedEventIDs = $includedEventIDs;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string|null
      * @see $linkEventUrl
      *
      */
-    public function getLinkEventUrl()
+    public function getLinkEventUrl(): ?string
     {
         return $this->linkEventUrl;
     }
 
     /**
-     * @param mixed $linkEventUrl
+     * @param string|null $linkEventUrl
      * @return Event
      * @see $linkEventUrl
-     *
      */
-    public function setLinkEventUrl($linkEventUrl)
+    public function setLinkEventUrl(?string $linkEventUrl): Event
     {
         $this->linkEventUrl = $linkEventUrl;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return float|null
      * @see $maxPrice
      *
      */
-    public function getMaxPrice()
+    public function getMaxPrice(): ?float
     {
         return $this->maxPrice;
     }
 
     /**
-     * @param mixed $maxPrice
+     * @param float|null $maxPrice
      * @return Event
      * @see $maxPrice
-     *
      */
-    public function setMaxPrice($maxPrice)
+    public function setMaxPrice(?float $maxPrice): Event
     {
         $this->maxPrice = $maxPrice;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return float|null
      * @see $minPrice
      *
      */
-    public function getMinPrice()
+    public function getMinPrice(): ?float
     {
         return $this->minPrice;
     }
 
     /**
-     * @param mixed $minPrice
+     * @param float|null $minPrice
      * @return Event
      * @see $minPrice
-     *
      */
-    public function setMinPrice($minPrice)
+    public function setMinPrice(?float $minPrice): Event
     {
         $this->minPrice = $minPrice;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return int|null
      * @see $numberOfEvents
      *
      */
-    public function getNumberOfEvents()
+    public function getNumberOfEvents(): ?int
     {
         return $this->numberOfEvents;
     }
 
     /**
-     * @param mixed $numberOfEvents
+     * @param int|null $numberOfEvents
      * @return Event
      * @see $numberOfEvents
-     *
      */
-    public function setNumberOfEvents($numberOfEvents)
+    public function setNumberOfEvents(?int $numberOfEvents): Event
     {
         $this->numberOfEvents = $numberOfEvents;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return int|null
      * @see $numberOfVenues
      *
      */
-    public function getNumberOfVenues()
+    public function getNumberOfVenues(): ?int
     {
         return $this->numberOfVenues;
     }
 
     /**
-     * @param mixed $numberOfVenues
+     * @param int|null $numberOfVenues
      * @return Event
      * @see $numberOfVenues
-     *
      */
-    public function setNumberOfVenues($numberOfVenues)
+    public function setNumberOfVenues(?int $numberOfVenues): Event
     {
         $this->numberOfVenues = $numberOfVenues;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string|null
      * @see $onsaleDate
      *
      */
-    public function getOnsaleDate()
+    public function getOnsaleDate(): ?string
     {
         return $this->onsaleDate;
     }
 
     /**
-     * @param mixed $onsaleDate
+     * @param string|null $onsaleDate
      * @return Event
      * @see $onsaleDate
-     *
      */
-    public function setOnsaleDate($onsaleDate)
+    public function setOnsaleDate(?string $onsaleDate): Event
     {
         $this->onsaleDate = $onsaleDate;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string|null
      * @see $onsaleTime
      *
      */
-    public function getOnsaleTime()
+    public function getOnsaleTime(): ?string
     {
         return $this->onsaleTime;
     }
 
     /**
-     * @param mixed $onsaleTime
+     * @param string|null $onsaleTime
      * @return Event
      * @see $onsaleTime
-     *
      */
-    public function setOnsaleTime($onsaleTime)
+    public function setOnsaleTime(?string $onsaleTime): Event
     {
         $this->onsaleTime = $onsaleTime;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string|null
      * @see $overrideImage
      * @see getImage()
      *
      */
-    public function getOverrideImage()
+    public function getOverrideImage(): ?string
     {
         return $this->overrideImage;
     }
@@ -1024,7 +993,7 @@ class Event
      * @see $fanticketImage
      *
      */
-    public function setOverrideImage(string $overrideImage)
+    public function setOverrideImage(?string $overrideImage): Event
     {
         $this->overrideImage = $overrideImage;
         return $this;
@@ -1053,154 +1022,147 @@ class Event
     }
 
     /**
-     * @return mixed
+     * @return int|null
      * @see $promoterId
      *
      */
-    public function getPromoterId()
+    public function getPromoterId(): ?int
     {
         return $this->promoterId;
     }
 
     /**
-     * @param mixed $promoterId
+     * @param int|null $promoterId
      * @return Event
      * @see $promoterId
-     *
      */
-    public function setPromoterId($promoterId)
+    public function setPromoterId(?int $promoterId): Event
     {
         $this->promoterId = $promoterId;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return bool|null
      * @see $onlyBookableInSP
      *
      */
-    public function getOnlyBookableInSP()
+    public function getOnlyBookableInSP(): ?bool
     {
         return $this->onlyBookableInSP;
     }
 
     /**
-     * @param mixed $onlyBookableInSP
+     * @param bool|null $onlyBookableInSP
      * @return Event
      * @see $onlyBookableInSP
-     *
      */
-    public function setOnlyBookableInSP($onlyBookableInSP)
+    public function setOnlyBookableInSP(?bool $onlyBookableInSP): Event
     {
         $this->onlyBookableInSP = $onlyBookableInSP;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return int|null
      * @see $ticketStock
      *
      */
-    public function getTicketStock()
+    public function getTicketStock(): ?int
     {
         return $this->ticketStock;
     }
 
     /**
-     * @param mixed $ticketStock
+     * @param int|null $ticketStock
      * @return Event
      * @see $ticketStock
-     *
      */
-    public function setTicketStock($ticketStock)
+    public function setTicketStock(?int $ticketStock): Event
     {
         $this->ticketStock = $ticketStock;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return bool|null
      * @see $ticketdirect
      *
      */
-    public function getTicketdirect()
+    public function getTicketdirect(): ?bool
     {
         return $this->ticketdirect;
     }
 
     /**
-     * @param mixed $ticketdirect
+     * @param bool|null $ticketdirect
      * @return Event
      * @see $ticketdirect
-     *
      */
-    public function setTicketdirect($ticketdirect)
+    public function setTicketdirect(?bool $ticketdirect): Event
     {
         $this->ticketdirect = $ticketdirect;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return bool|null
      * @see $willcall
      *
      */
-    public function getWillcall()
+    public function getWillcall(): ?bool
     {
         return $this->willcall;
     }
 
     /**
-     * @param mixed $willcall
+     * @param bool|null $willcall
      * @return Event
      * @see $willcall
-     *
      */
-    public function setWillcall($willcall)
+    public function setWillcall(?bool $willcall): Event
     {
         $this->willcall = $willcall;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return float|null
      * @see $venueLatitude
      *
      */
-    public function getVenueLatitude()
+    public function getVenueLatitude(): ?float
     {
         return $this->venueLatitude;
     }
 
     /**
-     * @param mixed $venueLatitude
+     * @param float|null $venueLatitude
      * @return Event
      * @see $venueLatitude
-     *
      */
-    public function setVenueLatitude($venueLatitude)
+    public function setVenueLatitude(?float $venueLatitude): Event
     {
         $this->venueLatitude = $venueLatitude;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return float|null
      * @see $venueLongitude
      *
      */
-    public function getVenueLongitude()
+    public function getVenueLongitude(): ?float
     {
         return $this->venueLongitude;
     }
 
     /**
-     * @param mixed $venueLongitude
+     * @param float|null $venueLongitude
      * @return Event
      * @see $venueLongitude
-     *
      */
-    public function setVenueLongitude($venueLongitude)
+    public function setVenueLongitude(?float $venueLongitude): Event
     {
         $this->venueLongitude = $venueLongitude;
         return $this;
@@ -1217,73 +1179,99 @@ class Event
         $this->processObject($object);
     }
 
+    // Advanced accessors
+
+    /**
+     * Note; the child object uses the term "picture" and "image" at different points.
+     * This is standardised to "image" in this class
+     *
+     * @return null|string
+     * @see $event_series
+     * @see getEventSerie()
+     * @see EventSerie::getEsPicture()
+     *
+     */
+    public function getEventSerieImage()
+    {
+        $response = null;
+
+        if (
+            $this->getEventSerie() &&
+            $this->getEventSerie()->getEsPicture()
+        ) {
+            $response = $this->getEventSerie()->getEsPicture();
+        }
+
+        return $response;
+    }
+
     // Other functionality
 
+    /**
+     * Sets up the class from a json_decoded object of the feed
+     *
+     * @param $object \stdClass json_decode() object
+     */
     public function processObject($object)
     {
-        $this->setArtistIds($object->artistIds);
-        $this->setArtistNames($object->artistNames);
-        $this->setDateRangeEnd($object->dateRangeEnd);
-        $this->setDateRangeStart($object->dateRangeStart);
-        $this->setDeliverable($object->deliverable);
-        $this->setEventCity($object->eventCity);
-        $this->setEventCityId($object->eventCityId);
-        $this->setEventCountry($object->eventCountry);
-        $this->setEventDate($object->eventDate);
-        $this->setEventDateIso8601($object->eventDateIso8601);
-        $this->setEventId($object->eventId);
-        $this->setEventLink($object->eventLink);
-        $this->setEventName($object->eventName);
-        $this->setEventProvince($object->eventProvince);
-        $this->setEventSearchText($object->eventSearchText);
+        $this->setArtistIds($object->artistIds ?? null);
+        $this->setArtistNames($object->artistNames ?? null);
+        $this->setDateRangeEnd($object->dateRangeEnd ?? null);
+        $this->setDateRangeStart($object->dateRangeStart ?? null);
+        $this->setDeliverable($object->deliverable ?? null);
+        $this->setEventCity($object->eventCity ?? null);
+        $this->setEventCityId($object->eventCityId ?? null);
+        $this->setEventCountry($object->eventCountry ?? null);
+        $this->setEventDate($object->eventDate ?? null);
+        $this->setEventDateIso8601($object->eventDateIso8601 ?? null);
+        $this->setEventId($object->eventId ?? null);
+        $this->setEventLink($object->eventLink ?? null);
+        $this->setEventName($object->eventName ?? null);
+        $this->setEventProvince($object->eventProvince ?? null);
+        $this->setEventSearchText($object->eventSearchText ?? null);
+        $this->setEventStatus($object->eventStatus ?? null);
+        $this->setEventStreet($object->eventStreet ?? null);
+        $this->setEventTime($object->eventTime ?? null);
+        $this->setEventType($object->eventType ?? null);
+        $this->setEventVenue($object->eventVenue ?? null);
+        $this->setEventVenueGroupId($object->eventVenueGroupId ?? null);
+        $this->setEventVenueId($object->eventVenueId ?? null);
+        $this->setEventZip($object->eventZip ?? null);
+        $this->setEvoLink($object->evoLink ?? null);
+        $this->setFanticketImage($object->fanticketImage ?? null);
+        $this->setIncludedEventIDs($object->includedEventIDs ?? null);
+        $this->setLinkEventUrl($object->linkEventUrl ?? null);
+        $this->setMaxPrice($object->maxPrice ?? null);
+        $this->setMinPrice($object->minPrice ?? null);
+        $this->setNumberOfEvents($object->numberOfEvents ?? null);
+        $this->setNumberOfVenues($object->numberOfVenues ?? null);
+        $this->setOnsaleDate($object->onsaleDate ?? null);
+        $this->setOnsaleTime($object->onsaleTime ?? null);
+        $this->setOverrideImage($object->overrideImage ?? null);
+        $this->setPromoterId($object->promoterId ?? null);
+        $this->setOnlyBookableInSP($object->onlyBookableInSP ?? null);
+        $this->setTicketStock($object->ticketStock ?? null);
+        $this->setTicketdirect($object->ticketdirect ?? null);
+        $this->setWillcall($object->willcall ?? null);
+        $this->setVenueLatitude($object->venueLatitude ?? null);
+        $this->setVenueLongitude($object->venueLongitude ?? null);
 
-        if($object->eventSeriesImage ?? false) {
-            $this->setEventSeriesImage($object->eventSeriesImage);
-        }
-
-        $this->setEventStatus($object->eventStatus);
-        $this->setEventStreet($object->eventStreet);
-        $this->setEventTime($object->eventTime);
-        $this->setEventType($object->eventType);
-        $this->setEventVenue($object->eventVenue);
-        $this->setEventVenueGroupId($object->eventVenueGroupId);
-        $this->setEventVenueId($object->eventVenueId);
-        $this->setEventZip($object->eventZip);
-        $this->setEvoLink($object->evoLink);
-        $this->setFanticketImage($object->fanticketImage);
-        $this->setIncludedEventIDs($object->includedEventIDs);
-        $this->setLinkEventUrl($object->linkEventUrl);
-        $this->setMaxPrice($object->maxPrice);
-        $this->setMinPrice($object->minPrice);
-        $this->setNumberOfEvents($object->numberOfEvents);
-        $this->setNumberOfVenues($object->numberOfVenues);
-        $this->setOnsaleDate($object->onsaleDate);
-        $this->setOnsaleTime($object->onsaleTime);
-
-        if($object->overrideImage ?? false) {
-            $this->setOverrideImage($object->overrideImage);
-        }
-
-        if($object->priceCategories ?? false) {
+        // relationships objects:
+        if ($object->priceCategories ?? false) {
             $this->setPriceCategories(
                 $this->processPriceCategories($object->priceCategories)
             );
         }
 
-        $this->setPromoterId($object->promoterId);
-        $this->setOnlyBookableInSP($object->onlyBookableInSP);
-        $this->setTicketStock($object->ticketStock);
-        $this->setTicketdirect($object->ticketdirect);
-        $this->setWillcall($object->willcall);
-        $this->setVenueLatitude($object->venueLatitude);
-        $this->setVenueLongitude($object->venueLongitude);
-
+        if ($object->eventSerie ?? false) {
+            $this->setEventSerie($object->eventSerie);
+        }
     }
 
     /**
      * Returns an array of meta data elements
      *
-     * Used to smart-convert the object into a dumb array
+     * Used to smart-convert the object into a dumb array; useful for views/templates
      *
      * @return array
      */
@@ -1292,9 +1280,9 @@ class Event
         $properties = get_object_vars($this);
         unset($properties['priceCategories']);
 
-        // convert arrys
-        foreach($properties as $key => $property) {
-            if(is_array($property)) {
+        // convert arrays
+        foreach ($properties as $key => $property) {
+            if (is_array($property)) {
                 $properties[$key] = implode(',', $property);
             }
         }
@@ -1309,32 +1297,35 @@ class Event
      * Firstly attempts to load overrideImage,
      * Then attempts to load from the parent object
      *
+     * @param string $default
+     * @return string
      * @see $overrideImage
      * @see $eventSeriesImage
      *
-     * @param string $default
-     * @return string
      */
     public function getImage(string $default = ''): string
     {
-        if($this->getOverrideImage()) {
+        if ($this->getOverrideImage()) {
             $image = $this->getOverrideImage();
-        } elseif($this->getEventSeriesImage()) {
-            $image = $this->getEventSeriesImage();
+        } elseif (
+            $this->getEventSerie() &&
+            $this->getEventSerie()->getEsPicture()
+        ) {
+            $image = $this->getEventSerie()->getEsPicture();
         } else {
             $image = $default;
         }
 
-        return $default;
+        return $image;
     }
 
     /**
      * processes the priceCategories inside an Event into an array of priceCategory objects
      *
-     * @param $feed_events
+     * @param $feed_price_categories
      * @return array
      */
-    protected function processPriceCategories($feed_price_categories)
+    protected function processPriceCategories($feed_price_categories): array
     {
         $processed_price_categories = [];
 

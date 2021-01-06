@@ -26,7 +26,7 @@ namespace Floor9design\Eventim\PluginCore\Models;
  * Models the EventSerie collection
  *
  * @category  None
- * @package   Floor9design\LaravelRestfulApi\Tests\Unit
+ * @package   Floor9design\Eventim\PluginCore\Tests\Unit
  * @author    Rick Morice <rick@floor9design.com>
  * @copyright Floor9design Ltd
  * @license   Private software

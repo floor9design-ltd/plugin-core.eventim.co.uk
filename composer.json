@@ -22,7 +22,8 @@
     },
     "require-dev": {
         "phpunit/phpunit": ">=8.0",
-        "mockery/mockery": "dev-master"
+        "mockery/mockery": "dev-master",
+        "floor9design/test-data-generator" : "*"
     },
     "autoload": {
         "psr-4": {
