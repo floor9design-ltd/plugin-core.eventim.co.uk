@@ -171,6 +171,58 @@ class EventTest extends TestCase
         $this->assertEquals($event->getMaxPrice(), $event_array['maxPrice']);
     }
 
+    /**
+     * Tests Event::eventStatusHumaniser()
+     */
+    public function testEventStatusHumaniser()
+    {
+        $ids = [1, 2, 3, 4, 6, 7, 8, 14, 16];
+
+        $test_object_array = $this->createTestObjectArray();
+        $event = new Event($test_object_array['object']);
+
+        foreach ($ids as $id) {
+            $response = $event->eventStatusHumaniser($id);
+
+            // check array
+            $this->assertIsArray($response);
+
+            // check format of array
+            $keys = ['short', 'long', 'verbose', 'event_buyable'];
+            $this->assertEquals($keys, array_keys($response));
+        }
+
+        // Test a bad array
+        $response = $event->eventStatusHumaniser(100);
+        $bad_response = [
+            'short' => '',
+            'long' => '',
+            'verbose' => '',
+            'event_buyable' => false
+        ];
+
+        // check array
+        $this->assertIsArray($response);
+
+        // check format of array
+        $this->assertEquals($bad_response, $response);
+    }
+
+    /**
+     * Tests Event::getEventStatusLookup(), Event::setEventStatusLookup()
+     */
+    public function testEventStatusLookupAccessors()
+    {
+        $test_object_array = $this->createTestObjectArray();
+        $event = new Event($test_object_array['object']);
+
+        $event->setEventStatus(1);
+        $event_status_lookup = $event->eventStatusHumaniser($event->getEventStatus());
+        $event->setEventStatusLookup($event_status_lookup);
+
+        $this->assertEquals($event_status_lookup, $event->getEventStatusLookup());
+    }
+
     // setup
 
     /**

@@ -126,6 +126,11 @@ class Event
     protected $eventStatus;
 
     /**
+     * @var array|null
+     */
+    protected $event_status_lookup;
+
+    /**
      * @var string|null
      */
     protected $eventStreet;
@@ -616,6 +621,27 @@ class Event
     public function setEventStatus(?int $eventStatus): Event
     {
         $this->eventStatus = $eventStatus;
+        return $this;
+    }
+
+    /**
+     * @return array|null
+     * @see $eventStatusLookup
+     *
+     */
+    public function getEventStatusLookup(): ?array
+    {
+        return $this->event_status_lookup;
+    }
+
+    /**
+     * @param array|null $event_status_lookup
+     * @return Event
+     * @see $eventStatus
+     */
+    public function setEventStatusLookup(?array $event_status_lookup): Event
+    {
+        $this->event_status_lookup = $event_status_lookup;
         return $this;
     }
 
@@ -1256,6 +1282,9 @@ class Event
         $this->setVenueLatitude($object->venueLatitude ?? null);
         $this->setVenueLongitude($object->venueLongitude ?? null);
 
+        // calculated properties
+        $this->setEventStatusLookup($this->eventStatusHumaniser($this->getEventStatus()));
+
         // relationships objects:
         if ($object->priceCategories ?? false) {
             $this->setPriceCategories(
@@ -1320,6 +1349,104 @@ class Event
     }
 
     /**
+     * Turns the event Status into a "human" response
+     * eg: "Unavailable"
+     *
+     * @param int $event_status
+     * @return string[]
+     */
+    public function eventStatusHumaniser(int $event_status): array
+    {
+        $response = [
+            'short' => '',
+            'long' => '',
+            'verbose' => '',
+            'event_buyable' => false
+        ];
+
+        switch ($event_status) {
+            case "0":
+                // UNKNOWN
+                break;
+            case "1":
+                $response = [
+                    'short' => 'Cancelled',
+                    'long' => 'This event has been cancelled',
+                    'verbose' => 'Event has been set to a status Cancelled in the inventory system',
+                    'event_buyable' => false
+                ];
+                break;
+            case "2":
+                $response = [
+                    'short' => 'Available',
+                    'long' => 'Tickets available',
+                    'verbose' => 'Event is available and tickets can be purchased',
+                    'event_buyable' => true
+                ];
+                break;
+            case "3":
+                $response = [
+                    'short' => 'Not available',
+                    'long' => 'Tickets are not available',
+                    'verbose' => 'Event is available, but there are no available delivery methods anymore, thus is cannot be purchased',
+                    'event_buyable' => false
+                ];
+                break;
+            case "4":
+                $response = [
+                    'short' => 'Sold out',
+                    'long' => 'This event is sold out',
+                    'verbose' => 'Even has been set to a status Sold out in the inventory system, not additional tickets will be available',
+                    'event_buyable' => false
+                ];
+                break;
+            case "6":
+                // NO_AMOUNT - Currently there are no more tickets available for sale, this might change if there is an additional inventory enabled
+                $response = [
+                    'short' => 'Not available',
+                    'long' => 'There are no more tickets available for sale',
+                    'verbose' => 'Currently there are no more tickets available for sale, this might change if there is an additional inventory enabled',
+                    'event_buyable' => false
+                ];
+                break;
+            case "7":
+                $response = [
+                    'short' => 'Not available',
+                    'long' => 'This event is not on sale yet',
+                    'verbose' => 'Event is available, but not on sale yet',
+                    'event_buyable' => false
+                ];
+                break;
+            case "8":
+                $response = [
+                    'short' => 'Not available',
+                    'long' => 'This event is no longer available',
+                    'verbose' => 'This event takes place soon, and tickets are no longer available',
+                    'event_buyable' => false
+                ];
+                break;
+            case "14":
+                $response = [
+                    'short' => 'Member Club',
+                    'long' => 'This event is only available for Member Club sales',
+                    'verbose' => 'Event is only available for Member Club sales (CH)',
+                    'event_buyable' => false
+                ];
+                break;
+            case "16":
+                $response = [
+                    'short' => 'Postponed',
+                    'long' => 'This event has been postponed',
+                    'verbose' => 'Event has been postponed, additional information has been sent to the customers / published on the page. eventDate and eventTime fields contain the new event date.',
+                    'event_buyable' => false
+                ];
+                break;
+        }
+
+        return $response;
+    }
+
+    /**
      * processes the priceCategories inside an Event into an array of priceCategory objects
      *
      * @param $feed_price_categories
@@ -1336,4 +1463,14 @@ class Event
         return $processed_price_categories;
     }
 
+    /**
+     * Formats a number into a currency string: eg: 5,200.20
+     *
+     * @param float $unformatted
+     * @return string
+     */
+    protected function currencyConverter(float $unformatted): string
+    {
+        return number_format($unformatted, 2, '.', ',');
+    }
 }
