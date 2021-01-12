@@ -41,9 +41,7 @@ To be completed
 
 ## Testing
 
-Tests under development and are underway.
-
-To run the existing tests: 
+To run the tests: 
 
 * `./vendor/phpunit/phpunit/phpunit`
 
@@ -63,4 +61,4 @@ A changelog is generated here:
 
 ## License
 
-This is private software.
+* [MIT](LICENCE.md)
