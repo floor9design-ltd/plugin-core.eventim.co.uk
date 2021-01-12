@@ -78,16 +78,16 @@
         },
         {
             "name": "floor9design/test-data-generator",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/floor9design-ltd/test-data-generator.git",
-                "reference": "53fe2df1213711c552396288ae454e6b1c57260e"
+                "reference": "907b1144730b03f035df58fad085f2509a9d6984"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/floor9design-ltd/test-data-generator/zipball/53fe2df1213711c552396288ae454e6b1c57260e",
-                "reference": "53fe2df1213711c552396288ae454e6b1c57260e",
+                "url": "https://api.github.com/repos/floor9design-ltd/test-data-generator/zipball/907b1144730b03f035df58fad085f2509a9d6984",
+                "reference": "907b1144730b03f035df58fad085f2509a9d6984",
                 "shasum": ""
             },
             "require": {
@@ -127,9 +127,9 @@
             ],
             "support": {
                 "issues": "https://github.com/floor9design-ltd/test-data-generator/issues",
-                "source": "https://github.com/floor9design-ltd/test-data-generator/tree/1.2.0"
+                "source": "https://github.com/floor9design-ltd/test-data-generator/tree/1.3.0"
             },
-            "time": "2021-01-05T14:38:27+00:00"
+            "time": "2021-01-06T17:19:37+00:00"
         },
         {
             "name": "hamcrest/hamcrest-php",
@@ -2092,16 +2092,16 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.20.0",
+            "version": "v1.22.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
-                "reference": "f4ba089a5b6366e453971d3aad5fe8e897b37f41"
+                "reference": "c6c942b1ac76c82448322025e084cadc56048b4e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/f4ba089a5b6366e453971d3aad5fe8e897b37f41",
-                "reference": "f4ba089a5b6366e453971d3aad5fe8e897b37f41",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/c6c942b1ac76c82448322025e084cadc56048b4e",
+                "reference": "c6c942b1ac76c82448322025e084cadc56048b4e",
                 "shasum": ""
             },
             "require": {
@@ -2113,7 +2113,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.20-dev"
+                    "dev-main": "1.22-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -2151,7 +2151,7 @@
                 "portable"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-ctype/tree/v1.20.0"
+                "source": "https://github.com/symfony/polyfill-ctype/tree/v1.22.0"
             },
             "funding": [
                 {
@@ -2167,7 +2167,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-10-23T14:02:19+00:00"
+            "time": "2021-01-07T16:49:33+00:00"
         },
         {
             "name": "theseer/tokenizer",

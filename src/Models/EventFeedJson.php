@@ -10,7 +10,7 @@
  * @package   Floor9design\Eventim\PluginCore\Models
  * @author    Rick Morice <rick@floor9design.com>
  * @copyright Floor9design Ltd
- * @license   Private software
+ * @license MIT
  * @version   1.0
  * @link      https://github.com/floor9design-ltd/plugin-core.eventim.co.uk
  * @link      https://floor9design.com
@@ -31,7 +31,7 @@ use Exception;
  * @package   Floor9design\Eventim\PluginCore\Models
  * @author    Rick Morice <rick@floor9design.com>
  * @copyright Floor9design Ltd
- * @license   Private software
+ * @license MIT
  * @version   1.0
  * @link      https://github.com/floor9design-ltd/plugin-core.eventim.co.uk
  * @link      https://floor9design.com

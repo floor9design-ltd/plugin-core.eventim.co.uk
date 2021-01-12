@@ -10,7 +10,7 @@
  * @package   Floor9design\Eventim\PluginCore\Tests\Unit
  * @author    Rick Morice <rick@floor9design.com>
  * @copyright Floor9design Ltd
- * @license   Private software
+ * @license MIT
  * @version   1.0
  * @link      https://github.com/floor9design-ltd/plugin-core.eventim.co.uk
  * @link      https://floor9design.com
@@ -26,17 +26,18 @@ use Floor9design\Eventim\PluginCore\Models\EventSerie;
 use Floor9design\TestDataGenerator\Generator;
 use Floor9design\TestDataGenerator\GeneratorException;
 use PHPUnit\Framework\TestCase;
+use StdClass;
 
 /**
  * EventTest
  *
- * Tests the EventFeedJson including populating its children.
+ * Tests the Event class.
  *
  * @category  None
  * @package   Floor9design\Eventim\PluginCore\Tests\Unit
  * @author    Rick Morice <rick@floor9design.com>
  * @copyright Floor9design Ltd
- * @license   Private software
+ * @license MIT
  * @version   1.0
  * @link      https://github.com/floor9design-ltd/plugin-core.eventim.co.uk
  * @link      https://floor9design.com
@@ -168,9 +169,7 @@ class EventTest extends TestCase
 
         // int
         $this->assertEquals($event->getMaxPrice(), $event_array['maxPrice']);
-
     }
-
 
     // setup
 
@@ -182,7 +181,7 @@ class EventTest extends TestCase
      */
     private function createTestObjectArray(): array
     {
-        $object = new \StdClass();
+        $object = new StdClass();
 
         $array = [];
 
