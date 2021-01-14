@@ -1469,7 +1469,7 @@ class Event
      * @param float $unformatted
      * @return string
      */
-    protected function currencyConverter(float $unformatted): string
+    public function currencyConverter(float $unformatted): string
     {
         return number_format($unformatted, 2, '.', ',');
     }

@@ -23,6 +23,7 @@ namespace Floor9design\Eventim\PluginCore\Tests\Unit;
 
 use Floor9design\Eventim\PluginCore\Models\Event;
 use Floor9design\Eventim\PluginCore\Models\EventSerie;
+use Floor9design\Eventim\PluginCore\Models\PriceCategory;
 use Floor9design\TestDataGenerator\Generator;
 use Floor9design\TestDataGenerator\GeneratorException;
 use PHPUnit\Framework\TestCase;
@@ -108,6 +109,14 @@ class EventTest extends TestCase
 
         // eventSeriesImage
         $this->assertEquals($event->getEventSerieImage(), $test_string);
+
+        // priceCategory
+
+        // create a stubbed PriceCategory object:
+        $price_category_stub = $this->createStub(PriceCategory::class);
+
+        $event->setPriceCategories([$price_category_stub]);
+        $this->assertEquals([$price_category_stub], $event->getPriceCategories());
     }
 
     /**
@@ -192,8 +201,22 @@ class EventTest extends TestCase
             $this->assertEquals($keys, array_keys($response));
         }
 
-        // Test a bad array
+        // Test bad statuses
         $response = $event->eventStatusHumaniser(100);
+        $bad_response = [
+            'short' => '',
+            'long' => '',
+            'verbose' => '',
+            'event_buyable' => false
+        ];
+
+        // check array
+        $this->assertIsArray($response);
+
+        // check format of array
+        $this->assertEquals($bad_response, $response);
+
+        $response = $event->eventStatusHumaniser(0);
         $bad_response = [
             'short' => '',
             'long' => '',
@@ -221,6 +244,61 @@ class EventTest extends TestCase
         $event->setEventStatusLookup($event_status_lookup);
 
         $this->assertEquals($event_status_lookup, $event->getEventStatusLookup());
+    }
+
+    /**
+     * Tests Event::getEventStatusLookup(), Event::setEventStatusLookup()
+     * @throws GeneratorException
+     */
+    public function testCurrencyConverter()
+    {
+        $test_object_array = $this->createTestObjectArray();
+        $event = new Event($test_object_array['object']);
+
+        // test decimal places
+        $this->assertEquals('12.00', $event->currencyConverter(12.0));
+        $this->assertEquals('12.00', $event->currencyConverter(12));
+        $this->assertEquals('12.00', $event->currencyConverter(12.0000));
+
+        // test commas
+        $this->assertEquals('12,345.00', $event->currencyConverter(12345));
+    }
+
+    /**
+     * Tests Event::processObject()
+     */
+    public function testProcessObject()
+    {
+        // function is invoked on instantiation by constructor
+
+        // only object basics:
+        $test_object_array = $this->createTestObjectArray();
+        $event = new Event($test_object_array['object']);
+
+        // test all gets
+        foreach ($test_object_array['items'] as $item) {
+            // can't use arrays in function context
+            $property = $item['property'];
+            $method = $item['method'];
+
+            $this->assertEquals(
+                $test_object_array['object']->$property,
+                $event->$method()
+            );
+        }
+
+        // test child objects:
+        $test_object_array = $this->createTestObjectArray();
+
+        $event_serie_stub = $this->createStub(EventSerie::class);
+        $price_categories = [];
+
+        $test_object_array['object']->eventSerie = $event_serie_stub;
+        $test_object_array['object']->priceCategories = $price_categories;
+
+        $event = new Event($test_object_array['object']);
+        $this->assertEquals($event_serie_stub, $event->getEventSerie());
+        $this->assertSame($price_categories, $event->getPriceCategories());
     }
 
     // setup
@@ -380,9 +458,6 @@ class EventTest extends TestCase
             $array['items'][$property]['property'] = $property;
             $array['items'][$property]['method'] = $method;
         }
-
-        // @todo once child objects are made:
-        // EventSerie, PriceCategory
 
         $array['object'] = $object;
 
