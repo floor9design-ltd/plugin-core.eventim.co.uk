@@ -1283,7 +1283,9 @@ class Event
         $this->setVenueLongitude($object->venueLongitude ?? null);
 
         // calculated properties
-        $this->setEventStatusLookup($this->eventStatusHumaniser($this->getEventStatus()));
+        if($this->getEventStatus() ?? 0) {
+            $this->setEventStatusLookup($this->eventStatusHumaniser($this->getEventStatus()));
+        }
 
         // relationships objects:
         if ($object->priceCategories ?? false) {
