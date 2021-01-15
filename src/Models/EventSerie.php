@@ -58,12 +58,18 @@ class EventSerie
 
     protected $esName;
 
+    /**
+     * @var string|null
+     */
     protected $esPicture;
 
     protected $esPictureBig;
 
     protected $esPictureSmall;
 
+    /**
+     * @var string|null
+     */
     protected $esText;
 
     protected $esTopTen;
@@ -285,22 +291,22 @@ class EventSerie
     }
 
     /**
-     * @return mixed
+     * @return string|null
      * @see $esPicture
      *
      */
-    public function getEsPicture()
+    public function getEsPicture(): ?string
     {
         return $this->esPicture;
     }
 
     /**
-     * @param mixed $esPicture
+     * @param string|null $esPicture
      * @return EventSerie
      * @see $esPicture
      *
      */
-    public function setEsPicture($esPicture)
+    public function setEsPicture(?string $esPicture): EventSerie
     {
         $this->esPicture = $esPicture;
         return $this;
@@ -351,22 +357,21 @@ class EventSerie
     }
 
     /**
-     * @return mixed
+     * @return string|null
      * @see $esText
      *
      */
-    public function getEsText()
+    public function getEsText(): ?string
     {
         return $this->esText;
     }
 
     /**
-     * @param mixed $esText
+     * @param string|null $esText
      * @return EventSerie
      * @see $esText
-     *
      */
-    public function setEsText($esText)
+    public function setEsText(?string $esText): EventSerie
     {
         $this->esText = $esText;
         return $this;
@@ -581,37 +586,41 @@ class EventSerie
 
     public function processObject($object)
     {
-        $this->setArtists(
-            $this->processArtists($object->artists)
-        );
+        if ($object->artists) {
+            $this->setArtists(
+                $this->processArtists($object->artists)
+            );
+        }
 
-        $this->setArtistRating($object->artistRating);
-        $this->setEsBegin($object->esBegin);
+        $this->setArtistRating($object->artistRating ?? null);
+        $this->setEsBegin($object->esBegin ?? null);
         $this->setEsCategories(
             $this->processEsCategories($object->esCategories)
         );
-        $this->SetEsEnd($object->esEnd);
-        $this->setEsId($object->esId);
-        $this->setEsInfo($object->esInfo);
-        $this->setEsLink($object->esLink);
-        $this->setEsName($object->esName);
-        $this->setEsPicture($object->esPicture);
-        $this->setEsPictureBig($object->esPictureBig);
-        $this->setEsPictureSmall($object->esPictureSmall);
-        $this->setEsText($object->esText);
-        $this->setEsTopTen($object->esTopTen);
+        $this->SetEsEnd($object->esEnd ?? null);
+        $this->setEsId($object->esId ?? null);
+        $this->setEsInfo($object->esInfo ?? null);
+        $this->setEsLink($object->esLink ?? null);
+        $this->setEsName($object->esName ?? null);
+        $this->setEsPicture($object->esPicture ?? null);
+        $this->setEsPictureBig($object->esPictureBig ?? null);
+        $this->setEsPictureSmall($object->esPictureSmall ?? null);
+        $this->setEsText($object->esText ?? null);
+        $this->setEsTopTen($object->esTopTen ?? null);
 
-        $this->setEvents(
-            $this->processEvents($object->events)
-        );
+        if ($object->events) {
+            $this->setEvents(
+                $this->processEvents($object->events)
+            );
+        }
 
-        $this->setEvoLink($object->evoLink);
-        $this->setFanticket($object->fanticket);
-        $this->setFanticketImage($object->fanticketImage);
-        $this->setMaxPrice($object->maxPrice);
-        $this->setMinPrice($object->minPrice);
-        $this->setRanking($object->ranking);
-        $this->setSearchText($object->searchText);
+        $this->setEvoLink($object->evoLink ?? null);
+        $this->setFanticket($object->fanticket ?? null);
+        $this->setFanticketImage($object->fanticketImage ?? null);
+        $this->setMaxPrice($object->maxPrice ?? null);
+        $this->setMinPrice($object->minPrice ?? null);
+        $this->setRanking($object->ranking ?? null);
+        $this->setSearchText($object->searchText ?? null);
     }
 
     public function getPostMetaData()
@@ -624,8 +633,8 @@ class EventSerie
         unset($properties['events']);;
 
         // convert arrays
-        foreach($properties as $key => $property) {
-            if(is_array($property)) {
+        foreach ($properties as $key => $property) {
+            if (is_array($property)) {
                 $properties[$key] = implode(',', $property);
             }
         }

@@ -41,7 +41,7 @@ class Event
     // Properties
 
     /**
-     * @var null|array
+     * @var array|null
      */
     protected $artistIds = [];
 
@@ -634,7 +634,7 @@ class Event
     {
         $this->eventStatus = $eventStatus;
 
-        if($eventStatus) {
+        if ($eventStatus) {
             $this->setEventStatusLookup(
                 $this->eventStatusHumaniser($eventStatus)
             );
@@ -914,7 +914,7 @@ class Event
     {
         $this->maxPrice = $maxPrice;
 
-        if($maxPrice) {
+        if ($maxPrice) {
             $this->setMaxPriceFormatted(
                 $this->currencyConverter($maxPrice)
             );
@@ -963,7 +963,7 @@ class Event
     {
         $this->minPrice = $minPrice;
 
-        if($minPrice) {
+        if ($minPrice) {
             $this->setMinPriceFormatted(
                 $this->currencyConverter($minPrice)
             );
