@@ -299,6 +299,19 @@ class EventTest extends TestCase
         $event = new Event($test_object_array['object']);
         $this->assertEquals($event_serie_stub, $event->getEventSerie());
         $this->assertSame($price_categories, $event->getPriceCategories());
+
+        // test auto generated properties:
+
+        $this->assertIsArray($event->getEventStatusLookup());
+
+        $parts = explode('.', $event->getMaxPriceFormatted());
+        // decimals
+        $this->assertEquals(strlen($parts[1]), 2);
+
+        $parts = explode('.', $event->getMinPriceFormatted());
+        // decimals
+        $this->assertEquals(strlen($parts[1]), 2);
+
     }
 
     // setup

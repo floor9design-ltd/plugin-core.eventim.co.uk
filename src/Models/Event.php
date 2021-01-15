@@ -128,7 +128,7 @@ class Event
     /**
      * @var array|null
      */
-    protected $event_status_lookup;
+    protected $eventStatusLookup;
 
     /**
      * @var string|null
@@ -191,9 +191,21 @@ class Event
     protected $maxPrice;
 
     /**
+     * @var string|null
+     * @see $maxPrice
+     */
+    protected $maxPriceFormatted;
+
+    /**
      * @var float|null
      */
     protected $minPrice;
+
+    /**
+     * @var string|null
+     * @see $maxPrice
+     */
+    protected $minPriceFormatted;
 
     /**
      * @var int|null
@@ -621,6 +633,13 @@ class Event
     public function setEventStatus(?int $eventStatus): Event
     {
         $this->eventStatus = $eventStatus;
+
+        if($eventStatus) {
+            $this->setEventStatusLookup(
+                $this->eventStatusHumaniser($eventStatus)
+            );
+        }
+
         return $this;
     }
 
@@ -631,17 +650,17 @@ class Event
      */
     public function getEventStatusLookup(): ?array
     {
-        return $this->event_status_lookup;
+        return $this->eventStatusLookup;
     }
 
     /**
-     * @param array|null $event_status_lookup
+     * @param array|null $eventStatusLookup
      * @return Event
      * @see $eventStatus
      */
-    public function setEventStatusLookup(?array $event_status_lookup): Event
+    public function setEventStatusLookup(?array $eventStatusLookup): Event
     {
-        $this->event_status_lookup = $event_status_lookup;
+        $this->eventStatusLookup = $eventStatusLookup;
         return $this;
     }
 
@@ -894,6 +913,34 @@ class Event
     public function setMaxPrice(?float $maxPrice): Event
     {
         $this->maxPrice = $maxPrice;
+
+        if($maxPrice) {
+            $this->setMaxPriceFormatted(
+                $this->currencyConverter($maxPrice)
+            );
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     * @see $maxPriceFormatted
+     *
+     */
+    public function getMaxPriceFormatted(): ?string
+    {
+        return $this->maxPriceFormatted;
+    }
+
+    /**
+     * @param string|null $maxPriceFormatted
+     * @return Event
+     * @see $maxPriceFormatted
+     */
+    public function setMaxPriceFormatted(?string $maxPriceFormatted): Event
+    {
+        $this->maxPriceFormatted = $maxPriceFormatted;
         return $this;
     }
 
@@ -915,6 +962,34 @@ class Event
     public function setMinPrice(?float $minPrice): Event
     {
         $this->minPrice = $minPrice;
+
+        if($minPrice) {
+            $this->setMinPriceFormatted(
+                $this->currencyConverter($minPrice)
+            );
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     * @see $minPriceFormatted
+     *
+     */
+    public function getMinPriceFormatted(): ?float
+    {
+        return $this->minPriceFormatted;
+    }
+
+    /**
+     * @param string|null $minPriceFormatted
+     * @return Event
+     * @see $minPriceFormatted
+     */
+    public function setMinPriceFormatted(?string $minPriceFormatted): Event
+    {
+        $this->minPriceFormatted = $minPriceFormatted;
         return $this;
     }
 
@@ -1281,11 +1356,6 @@ class Event
         $this->setWillcall($object->willcall ?? null);
         $this->setVenueLatitude($object->venueLatitude ?? null);
         $this->setVenueLongitude($object->venueLongitude ?? null);
-
-        // calculated properties
-        if($this->getEventStatus() ?? 0) {
-            $this->setEventStatusLookup($this->eventStatusHumaniser($this->getEventStatus()));
-        }
 
         // relationships objects:
         if ($object->priceCategories ?? false) {
