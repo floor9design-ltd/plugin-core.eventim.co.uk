@@ -10,7 +10,7 @@
  * @package   Floor9design\Categoryim\PluginCore\Models
  * @author    Rick Morice <rick@floor9design.com>
  * @copyright Floor9design Ltd
- * @license MIT
+ * @license   MIT
  * @version   1.0
  * @link      https://github.com/floor9design-ltd/plugin-core.eventim.co.uk
  * @link      https://floor9design.com
@@ -29,7 +29,7 @@ namespace Floor9design\Eventim\PluginCore\Models;
  * @package   Floor9design\Eventim\PluginCore\Tests\Unit
  * @author    Rick Morice <rick@floor9design.com>
  * @copyright Floor9design Ltd
- * @license MIT
+ * @license   MIT
  * @version   1.0
  * @link      https://github.com/floor9design-ltd/plugin-core.eventim.co.uk
  * @link      https://floor9design.com
@@ -41,29 +41,27 @@ class EsCategory
     // Properties
 
     /**
-     * @var
+     * @var string|null
      */
     protected $category;
 
     // Accessors
 
     /**
-     * @return mixed
+     * @return string|null
      * @see $category
-     *
      */
-    public function getCategory()
+    public function getCategory(): ?string
     {
         return $this->category;
     }
 
     /**
-     * @param mixed $category
+     * @param string|null $category
      * @return EsCategory
      * @see $category
-     *
      */
-    public function setCategory($category)
+    public function setCategory(?string $category): EsCategory
     {
         $this->category = $category;
         return $this;
@@ -80,7 +78,6 @@ class EsCategory
         $this->processObject($object);
     }
 
-
     // Other functionality
 
     /**
@@ -88,6 +85,6 @@ class EsCategory
      */
     public function processObject($object)
     {
-        $this->setCategory($object->category);
+        $this->setCategory($object->category ?? null);
     }
 }
