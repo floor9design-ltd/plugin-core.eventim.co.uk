@@ -88,7 +88,7 @@ class Artist
      * @see $artistId
      *
      */
-    public function setArtistId($artistId)
+    public function setArtistId($artistId): Artist
     {
         $this->artistId = $artistId;
         return $this;
@@ -110,7 +110,7 @@ class Artist
      * @see $artistName
      *
      */
-    public function setArtistName($artistName)
+    public function setArtistName($artistName): Artist
     {
         $this->artistName = $artistName;
         return $this;
@@ -132,7 +132,7 @@ class Artist
      * @see $extArtistId
      *
      */
-    public function setExtArtistId($extArtistId)
+    public function setExtArtistId($extArtistId): Artist
     {
         $this->extArtistId = $extArtistId;
         return $this;
@@ -154,7 +154,7 @@ class Artist
      * @see $extArtistId2
      *
      */
-    public function setExtArtistId2($extArtistId2)
+    public function setExtArtistId2($extArtistId2): Artist
     {
         $this->extArtistId2 = $extArtistId2;
         return $this;
@@ -176,7 +176,7 @@ class Artist
      * @see $extArtistId3
      *
      */
-    public function setExtArtistId3($extArtistId3)
+    public function setExtArtistId3($extArtistId3): Artist
     {
         $this->extArtistId3 = $extArtistId3;
         return $this;
@@ -198,7 +198,7 @@ class Artist
      * @see $evoLink
      *
      */
-    public function setEvoLink($evoLink)
+    public function setEvoLink($evoLink): Artist
     {
         $this->evoLink = $evoLink;
         return $this;
@@ -215,13 +215,12 @@ class Artist
         $this->processObject($object);
     }
 
-
     // Other functionality
 
     /**
      * @param $object
      */
-    public function processObject($object)
+    public function processObject($object): void
     {
         $this->setArtistId($object->artistId);
         $this->setArtistName($object->artistName);

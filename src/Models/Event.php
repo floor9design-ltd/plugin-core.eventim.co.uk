@@ -218,6 +218,11 @@ class Event
     protected $numberOfVenues;
 
     /**
+     * @var bool|null
+     */
+    protected $onlyBookableInSP;
+
+    /**
      * @var string|null
      */
     protected $onsaleDate;
@@ -245,17 +250,12 @@ class Event
     /**
      * @var bool|null
      */
-    protected $onlyBookableInSP;
+    protected $ticketdirect;
 
     /**
      * @var int|null
      */
     protected $ticketStock;
-
-    /**
-     * @var bool|null
-     */
-    protected $ticketdirect;
 
     /**
      * @var bool|null
@@ -1036,6 +1036,27 @@ class Event
     }
 
     /**
+     * @return bool|null
+     * @see $onlyBookableInSP
+     *
+     */
+    public function getOnlyBookableInSP(): ?bool
+    {
+        return $this->onlyBookableInSP;
+    }
+
+    /**
+     * @param bool|null $onlyBookableInSP
+     * @return Event
+     * @see $onlyBookableInSP
+     */
+    public function setOnlyBookableInSP(?bool $onlyBookableInSP): Event
+    {
+        $this->onlyBookableInSP = $onlyBookableInSP;
+        return $this;
+    }
+
+    /**
      * @return string|null
      * @see $onsaleDate
      *
@@ -1145,22 +1166,22 @@ class Event
 
     /**
      * @return bool|null
-     * @see $onlyBookableInSP
+     * @see $ticketdirect
      *
      */
-    public function getOnlyBookableInSP(): ?bool
+    public function getTicketdirect(): ?bool
     {
-        return $this->onlyBookableInSP;
+        return $this->ticketdirect;
     }
 
     /**
-     * @param bool|null $onlyBookableInSP
+     * @param bool|null $ticketdirect
      * @return Event
-     * @see $onlyBookableInSP
+     * @see $ticketdirect
      */
-    public function setOnlyBookableInSP(?bool $onlyBookableInSP): Event
+    public function setTicketdirect(?bool $ticketdirect): Event
     {
-        $this->onlyBookableInSP = $onlyBookableInSP;
+        $this->ticketdirect = $ticketdirect;
         return $this;
     }
 
@@ -1182,27 +1203,6 @@ class Event
     public function setTicketStock(?int $ticketStock): Event
     {
         $this->ticketStock = $ticketStock;
-        return $this;
-    }
-
-    /**
-     * @return bool|null
-     * @see $ticketdirect
-     *
-     */
-    public function getTicketdirect(): ?bool
-    {
-        return $this->ticketdirect;
-    }
-
-    /**
-     * @param bool|null $ticketdirect
-     * @return Event
-     * @see $ticketdirect
-     */
-    public function setTicketdirect(?bool $ticketdirect): Event
-    {
-        $this->ticketdirect = $ticketdirect;
         return $this;
     }
 

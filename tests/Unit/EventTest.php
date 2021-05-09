@@ -23,11 +23,9 @@ namespace Floor9design\Eventim\PluginCore\Tests\Unit;
 
 use Floor9design\Eventim\PluginCore\Models\Event;
 use Floor9design\Eventim\PluginCore\Models\EventSerie;
-use Floor9design\Eventim\PluginCore\Models\PriceCategory;
-use Floor9design\TestDataGenerator\Generator;
+use Floor9design\Eventim\PluginCore\Tests\BaseTestCase;
 use Floor9design\TestDataGenerator\GeneratorException;
-use PHPUnit\Framework\TestCase;
-use StdClass;
+use Floor9design\TestingTools\Traits\AccessorTesterTrait;
 
 /**
  * EventTest
@@ -46,20 +44,9 @@ use StdClass;
  * @see       \Floor9design\Eventim\PluginCore\Models\Event
  * @since     File available since Release 1.0
  */
-class EventTest extends TestCase
+class EventTest extends BaseTestCase
 {
-    /**
-     * @var Generator
-     */
-    var $generator;
-
-    /**
-     * Set up the generator
-     */
-    public function setUp(): void
-    {
-        $this->generator = new Generator();
-    }
+    use AccessorTesterTrait;
 
     /**
      * Test the basic accessors
@@ -68,22 +55,51 @@ class EventTest extends TestCase
      */
     public function testBasicAccessors()
     {
-        $test_object_array = $this->createTestObjectArray();
+        $test_event_array = $this->createTestEventArray();
+        $event = new Event((object)$test_event_array);
 
-        // __construct automatically sets all properties
-        $event = new Event($test_object_array['object']);
-
-        // test all gets
-        foreach ($test_object_array['items'] as $item) {
-            // can't use arrays in function context
-            $property = $item['property'];
-            $method = $item['method'];
-
-            $this->assertEquals(
-                $test_object_array['object']->$property,
-                $event->$method()
-            );
-        }
+        $this->assertEquals($test_event_array['artistIds'], $event->getArtistIds());
+        $this->assertEquals($test_event_array['artistNames'], $event->getArtistNames());
+        $this->assertEquals($test_event_array['dateRangeEnd'], $event->getDateRangeEnd());
+        $this->assertEquals($test_event_array['dateRangeStart'], $event->getDateRangeStart());
+        $this->assertEquals($test_event_array['deliverable'], $event->getDeliverable());
+        $this->assertEquals($test_event_array['eventCity'], $event->getEventCity());
+        $this->assertEquals($test_event_array['eventCityId'], $event->getEventCityId());
+        $this->assertEquals($test_event_array['eventCountry'], $event->getEventCountry());
+        $this->assertEquals($test_event_array['eventDate'], $event->getEventDate());
+        $this->assertEquals($test_event_array['eventDateIso8601'], $event->getEventDateIso8601());
+        $this->assertEquals($test_event_array['eventId'], $event->getEventId());
+        $this->assertEquals($test_event_array['eventLink'], $event->getEventLink());
+        $this->assertEquals($test_event_array['eventName'], $event->getEventName());
+        $this->assertEquals($test_event_array['eventProvince'], $event->getEventProvince());
+        $this->assertEquals($test_event_array['eventSearchText'], $event->getEventSearchText());
+        $this->assertEquals($test_event_array['eventStatus'], $event->getEventStatus());
+        $this->assertEquals($test_event_array['eventStreet'], $event->getEventStreet());
+        $this->assertEquals($test_event_array['eventTime'], $event->getEventTime());
+        $this->assertEquals($test_event_array['eventType'], $event->getEventType());
+        $this->assertEquals($test_event_array['eventVenue'], $event->getEventVenue());
+        $this->assertEquals($test_event_array['eventVenueGroupId'], $event->getEventVenueGroupId());
+        $this->assertEquals($test_event_array['eventVenueId'], $event->getEventVenueId());
+        $this->assertEquals($test_event_array['eventZip'], $event->getEventZip());
+        $this->assertEquals($test_event_array['evoLink'], $event->getEvoLink());
+        $this->assertEquals($test_event_array['fanticketImage'], $event->getFanticketImage());
+        $this->assertEquals($test_event_array['includedEventIDs'], $event->getIncludedEventIDs());
+        $this->assertEquals($test_event_array['linkEventUrl'], $event->getLinkEventUrl());
+        $this->assertEquals($test_event_array['maxPrice'], $event->getMaxPrice());
+        $this->assertEquals($test_event_array['minPrice'], $event->getMinPrice());
+        $this->assertEquals($test_event_array['numberOfEvents'], $event->getNumberOfEvents());
+        $this->assertEquals($test_event_array['numberOfVenues'], $event->getNumberOfVenues());
+        $this->assertEquals($test_event_array['onlyBookableInSP'], $event->getOnlyBookableInSP());
+        $this->assertEquals($test_event_array['onsaleDate'], $event->getOnsaleDate());
+        $this->assertEquals($test_event_array['onsaleTime'], $event->getOnsaleTime());
+        $this->assertEquals($test_event_array['overrideImage'], $event->getOverrideImage());
+        $this->assertEquals($test_event_array['priceCategories'], $event->getPriceCategories());
+        $this->assertEquals($test_event_array['promoterId'], $event->getPromoterId());
+        $this->assertEquals($test_event_array['ticketdirect'], $event->getTicketdirect());
+        $this->assertEquals($test_event_array['ticketStock'], $event->getTicketStock());
+        $this->assertEquals($test_event_array['willcall'], $event->getWillcall());
+        $this->assertEquals($test_event_array['venueLatitude'], $event->getVenueLatitude());
+        $this->assertEquals($test_event_array['venueLongitude'], $event->getVenueLongitude());
     }
 
     /**
@@ -91,8 +107,8 @@ class EventTest extends TestCase
      */
     public function testAdvancedAccessors()
     {
-        $test_object_array = $this->createTestObjectArray();
-        $event = new Event($test_object_array['object']);
+        $test_event_array = $this->createTestEventArray();
+        $event = new Event((object)$test_event_array);
 
         // create a stubbed EventSerie object:
         $event_serie_stub = $this->createStub(EventSerie::class);
@@ -109,14 +125,6 @@ class EventTest extends TestCase
 
         // eventSeriesImage
         $this->assertEquals($event->getEventSerieImage(), $test_string);
-
-        // priceCategory
-
-        // create a stubbed PriceCategory object:
-        $price_category_stub = $this->createStub(PriceCategory::class);
-
-        $event->setPriceCategories([$price_category_stub]);
-        $this->assertEquals([$price_category_stub], $event->getPriceCategories());
     }
 
     /**
@@ -124,8 +132,8 @@ class EventTest extends TestCase
      */
     public function testGetImage()
     {
-        $test_object_array = $this->createTestObjectArray();
-        $event = new Event($test_object_array['object']);
+        $test_event_array = $this->createTestEventArray();
+        $event = new Event((object)$test_event_array);
 
         // create a stubbed EventSerie object:
         $event_serie_stub = $this->createStub(EventSerie::class);
@@ -137,6 +145,9 @@ class EventTest extends TestCase
             ->willReturn($test_image);
         $event->setEventSerie($event_serie_stub);
 
+        // unset the image:
+        $event->setOverrideImage(null);
+
         // eventSeriesImage
         $this->assertEquals($test_image, $event->getImage());
 
@@ -147,7 +158,7 @@ class EventTest extends TestCase
         $this->assertEquals($event->getImage(), $test_image);
 
         // Now test null:
-        $event = new Event($test_object_array['object']);
+        $event = new Event($test_event_array);
         $event->setEventSerie(null);
 
         $this->assertEquals($event->getImage(), '');
@@ -158,8 +169,8 @@ class EventTest extends TestCase
      */
     public function testGetEventData()
     {
-        $test_object_array = $this->createTestObjectArray();
-        $event = new Event($test_object_array['object']);
+        $test_event_array = $this->createTestEventArray();
+        $event = new Event((object)$test_event_array);
         $event_array = $event->getEventData();
 
         // accessors already done, and full mapping is tested elsewhere - so just check key output types:
@@ -187,8 +198,8 @@ class EventTest extends TestCase
     {
         $ids = [1, 2, 3, 4, 6, 7, 8, 14, 16];
 
-        $test_object_array = $this->createTestObjectArray();
-        $event = new Event($test_object_array['object']);
+        $test_event_array = $this->createTestEventArray();
+        $event = new Event((object)$test_event_array);
 
         foreach ($ids as $id) {
             $response = $event->eventStatusHumaniser($id);
@@ -236,8 +247,8 @@ class EventTest extends TestCase
      */
     public function testEventStatusLookupAccessors()
     {
-        $test_object_array = $this->createTestObjectArray();
-        $event = new Event($test_object_array['object']);
+        $test_event_array = $this->createTestEventArray();
+        $event = new Event((object)$test_event_array);
 
         $event->setEventStatus(1);
         $event_status_lookup = $event->eventStatusHumaniser($event->getEventStatus());
@@ -252,8 +263,8 @@ class EventTest extends TestCase
      */
     public function testCurrencyConverter()
     {
-        $test_object_array = $this->createTestObjectArray();
-        $event = new Event($test_object_array['object']);
+        $test_event_array = $this->createTestEventArray();
+        $event = new Event((object)$test_event_array);
 
         // test decimal places
         $this->assertEquals('12.00', $event->currencyConverter(12.0));
@@ -265,217 +276,36 @@ class EventTest extends TestCase
     }
 
     /**
+     * Tests Event::setMinPrice and Event::setMaxPrice
+     * @throws GeneratorException
+     */
+    public function testMinMaxPriceFormatted()
+    {
+        $test_event_array = $this->createTestEventArray();
+        $event = new Event((object)$test_event_array);
+
+        $event->setMaxPrice(12);
+        $this->assertEquals('12.00', $event->getMaxPriceFormatted());
+
+        $event->setMinPrice(12);
+        $this->assertEquals('12.00', $event->getMinPriceFormatted());
+    }
+
+    /**
      * Tests Event::processObject()
      */
     public function testProcessObject()
     {
-        // function is invoked on instantiation by constructor
+        // function is invoked on instantiation by constructor, so almost all is already done: only EventSerie remains
 
-        // only object basics:
-        $test_object_array = $this->createTestObjectArray();
-        $event = new Event($test_object_array['object']);
-
-        // test all gets
-        foreach ($test_object_array['items'] as $item) {
-            // can't use arrays in function context
-            $property = $item['property'];
-            $method = $item['method'];
-
-            $this->assertEquals(
-                $test_object_array['object']->$property,
-                $event->$method()
-            );
-        }
-
-        // test child objects:
-        $test_object_array = $this->createTestObjectArray();
-
+        // create a stubbed EventSerie object:
         $event_serie_stub = $this->createStub(EventSerie::class);
-        $price_categories = [];
 
-        $test_object_array['object']->eventSerie = $event_serie_stub;
-        $test_object_array['object']->priceCategories = $price_categories;
+        $test_event_array = $this->createTestEventArray();
+        $test_event_array['eventSerie'] = $event_serie_stub;
+        $event = new Event((object)$test_event_array);
 
-        $event = new Event($test_object_array['object']);
         $this->assertEquals($event_serie_stub, $event->getEventSerie());
-        $this->assertSame($price_categories, $event->getPriceCategories());
-
-        // test auto generated properties:
-
-        $this->assertIsArray($event->getEventStatusLookup());
-
-        $parts = explode('.', $event->getMaxPriceFormatted());
-        // decimals
-        $this->assertEquals(strlen($parts[1]), 2);
-
-        $parts = explode('.', $event->getMinPriceFormatted());
-        // decimals
-        $this->assertEquals(strlen($parts[1]), 2);
-
     }
-
-    // setup
-
-    /**
-     * Creates a test array for populating an example class
-     *
-     * @return array
-     * @throws GeneratorException
-     */
-    private function createTestObjectArray(): array
-    {
-        $object = new StdClass();
-
-        $array = [];
-
-        // ints:
-        foreach (
-            [
-                'eventCityId' => 'getEventCityId',
-                'eventId' => 'getEventId',
-                'eventStatus' => 'getEventStatus',
-                'eventType' => 'getEventType',
-                'eventVenueGroupId' => 'getEventVenueGroupId',
-                'eventVenueId' => 'getEventVenueId',
-                'numberOfEvents' => 'getNumberOfEvents',
-                'numberOfVenues' => 'getNumberOfVenues',
-                'promoterId' => 'getPromoterId',
-                'ticketStock' => 'getTicketStock'
-            ] as $property => $method
-        ) {
-            try {
-                $test_id = $this->generator->randomInteger(5, 100);
-            } catch (GeneratorException $e) {
-                throw new GeneratorException($e->getMessage());
-            }
-
-            $object->$property = $test_id;
-
-            $array['items'][$property]['property'] = $property;
-            $array['items'][$property]['method'] = $method;
-        }
-
-        // arrays of ints:
-        foreach (
-            [
-                'artistIds' => 'getArtistIds',
-                'includedEventIDs' => 'getIncludedEventIDs'
-            ] as $property => $method
-        ) {
-            try {
-                $test_ids = $this->generator->randomIntegerArray(5, 100, 4);
-            } catch (GeneratorException $e) {
-                throw new GeneratorException($e->getMessage());
-            }
-            $object->$property = $test_ids;
-
-            $array['items'][$property]['property'] = $property;
-            $array['items'][$property]['method'] = $method;
-        }
-
-        // strings:
-        foreach (
-            [
-                'artistNames' => 'getArtistNames',
-                'eventCity' => 'getEventCity',
-                'eventCountry' => 'getEventCountry',
-                'eventLink' => 'getEventLink',
-                'eventName' => 'getEventName',
-                'eventProvince' => 'getEventProvince',
-                'eventSearchText' => 'getEventSearchText',
-                'eventStreet' => 'getEventStreet',
-                'eventVenue' => 'getEventVenue',
-                'eventZip' => 'getEventZip',
-                'evoLink' => 'getEvoLink',
-                'fanticketImage' => 'getFanticketImage',
-                'linkEventUrl' => 'getLinkEventUrl'
-            ] as $property => $method
-        ) {
-            $test_string = $this->generator->randomString();
-            $object->$property = $test_string;
-
-            $array['items'][$property]['property'] = $property;
-            $array['items'][$property]['method'] = $method;
-        }
-
-        // dates:
-        foreach (
-            [
-                'dateRangeEnd' => 'getDateRangeEnd',
-                'dateRangeStart' => 'getDateRangeStart',
-                'eventDate' => 'getEventDate',
-                'eventDateIso8601' => 'getEventDateIso8601',
-                'onsaleDate' => 'getOnsaleDate'
-            ] as $property => $method
-        ) {
-            $test_date = $this->generator->randomMySqlDate();
-            $object->$property = $test_date;
-
-            $array['items'][$property]['property'] = $property;
-            $array['items'][$property]['method'] = $method;
-        }
-
-        // Times
-        foreach (
-            [
-                'eventTime' => 'getEventTime',
-                'onsaleTime' => 'getOnsaleTime'
-            ] as $property => $method
-        ) {
-            $test_date = $this->generator->randomMySqlDate('H:i:s');
-            $object->$property = $test_date;
-
-            $array['items'][$property]['property'] = $property;
-            $array['items'][$property]['method'] = $method;
-        }
-
-        // boolean:
-        foreach (
-            [
-                'deliverable' => 'getDeliverable',
-                'onlyBookableInSP' => 'getOnlyBookableInSP',
-                'ticketdirect' => 'getTicketdirect',
-                'willcall' => 'getWillcall'
-            ] as $property => $method
-        ) {
-            $object->$property = $this->generator->randomBoolean();
-
-            $array['items'][$property]['property'] = $property;
-            $array['items'][$property]['method'] = $method;
-        }
-
-        // money:
-        foreach (
-            [
-                'maxPrice' => 'getMaxPrice',
-                'minPrice' => 'getMinPrice'
-            ] as $property => $method
-        ) {
-            $test_id = $this->generator->randomCurrency();
-            $object->$property = $test_id;
-
-            $array['items'][$property]['property'] = $property;
-            $array['items'][$property]['method'] = $method;
-        }
-
-        // float:
-        foreach (
-            [
-                'venueLatitude' => 'getVenueLatitude',
-                'venueLongitude' => 'getVenueLongitude'
-            ] as $property => $method
-        ) {
-            $test_float = $this->generator->randomFloat();
-            $object->$property = $test_float;
-
-            $array['items'][$property]['property'] = $property;
-            $array['items'][$property]['method'] = $method;
-        }
-
-        $array['object'] = $object;
-
-        return $array;
-    }
-
 }
 

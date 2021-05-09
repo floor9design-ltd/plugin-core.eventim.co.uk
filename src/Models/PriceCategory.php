@@ -80,7 +80,6 @@ class PriceCategory
     /**
      * @return mixed
      * @see $currency
-     *
      */
     public function getCurrency()
     {
@@ -91,9 +90,8 @@ class PriceCategory
      * @param mixed $currency
      * @return PriceCategory
      * @see $currency
-     *
      */
-    public function setCurrency($currency)
+    public function setCurrency($currency): PriceCategory
     {
         $this->currency = $currency;
         return $this;
@@ -102,7 +100,6 @@ class PriceCategory
     /**
      * @return mixed
      * @see $inventory
-     *
      */
     public function getInventory()
     {
@@ -113,9 +110,8 @@ class PriceCategory
      * @param mixed $inventory
      * @return PriceCategory
      * @see $inventory
-     *
      */
-    public function setInventory($inventory)
+    public function setInventory($inventory): PriceCategory
     {
         $this->inventory = $inventory;
         return $this;
@@ -124,7 +120,6 @@ class PriceCategory
     /**
      * @return mixed
      * @see $price
-     *
      */
     public function getPrice()
     {
@@ -135,9 +130,8 @@ class PriceCategory
      * @param mixed $price
      * @return PriceCategory
      * @see $price
-     *
      */
-    public function setPrice($price)
+    public function setPrice($price): PriceCategory
     {
         $this->price = $price;
         return $this;
@@ -146,7 +140,6 @@ class PriceCategory
     /**
      * @return mixed
      * @see $priceCategoryId
-     *
      */
     public function getPriceCategoryId()
     {
@@ -157,9 +150,8 @@ class PriceCategory
      * @param mixed $priceCategoryId
      * @return PriceCategory
      * @see $priceCategoryId
-     *
      */
-    public function setPriceCategoryId($priceCategoryId)
+    public function setPriceCategoryId($priceCategoryId): PriceCategory
     {
         $this->priceCategoryId = $priceCategoryId;
         return $this;
@@ -168,7 +160,6 @@ class PriceCategory
     /**
      * @return mixed
      * @see $priceCategoryName
-     *
      */
     public function getPriceCategoryName()
     {
@@ -179,9 +170,8 @@ class PriceCategory
      * @param mixed $priceCategoryName
      * @return PriceCategory
      * @see $priceCategoryName
-     *
      */
-    public function setPriceCategoryName($priceCategoryName)
+    public function setPriceCategoryName($priceCategoryName): PriceCategory
     {
         $this->priceCategoryName = $priceCategoryName;
         return $this;
@@ -190,7 +180,6 @@ class PriceCategory
     /**
      * @return mixed
      * @see $priceCategoryNumber
-     *
      */
     public function getPriceCategoryNumber()
     {
@@ -201,9 +190,8 @@ class PriceCategory
      * @param mixed $priceCategoryNumber
      * @return PriceCategory
      * @see $priceCategoryNumber
-     *
      */
-    public function setPriceCategoryNumber($priceCategoryNumber)
+    public function setPriceCategoryNumber($priceCategoryNumber): PriceCategory
     {
         $this->priceCategoryNumber = $priceCategoryNumber;
         return $this;
@@ -212,7 +200,6 @@ class PriceCategory
     /**
      * @return mixed
      * @see $productType
-     *
      */
     public function getProductType()
     {
@@ -223,9 +210,8 @@ class PriceCategory
      * @param mixed $productType
      * @return PriceCategory
      * @see $productType
-     *
      */
-    public function setProductType($productType)
+    public function setProductType($productType): PriceCategory
     {
         $this->productType = $productType;
         return $this;
@@ -247,7 +233,7 @@ class PriceCategory
     /**
      * @param $object
      */
-    public function processObject($object)
+    public function processObject($object): void
     {
         $this->setCurrency($object->currency);
         $this->setInventory($object->inventory);

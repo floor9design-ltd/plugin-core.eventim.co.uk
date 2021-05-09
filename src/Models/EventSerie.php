@@ -40,22 +40,49 @@ class EventSerie
 {
     // Properties
 
+    /**
+     * @var array array of Artist objects
+     */
     protected $artists = [];
 
+    /**
+     * @var string|null
+     */
     protected $artistRating;
 
+    /**
+     * @var string|null MySQL date
+     */
     protected $esBegin;
 
+    /**
+     * @var array Array of EsCategory objects
+     */
     protected $esCategories;
 
+    /**
+     * @var string|null MySQL date
+     */
     protected $esEnd;
 
+    /**
+     * @var int|null
+     */
     protected $esId;
 
+    /**
+     * @var string|null
+     */
     protected $esInfo;
 
+    /**
+     * @var string|null
+     */
     protected $esLink;
 
+    /**
+     * @var string|null
+     */
     protected $esName;
 
     /**
@@ -63,8 +90,14 @@ class EventSerie
      */
     protected $esPicture;
 
+    /**
+     * @var string|null
+     */
     protected $esPictureBig;
 
+    /**
+     * @var string|null
+     */
     protected $esPictureSmall;
 
     /**
@@ -72,22 +105,49 @@ class EventSerie
      */
     protected $esText;
 
+    /**
+     * @var int|null
+     */
     protected $esTopTen;
 
+    /**
+     * @var array
+     */
     protected $events = [];
 
+    /**
+     * @var string|null
+     */
     protected $evoLink;
 
+    /**
+     * @var bool
+     */
     protected $fanticket;
 
+    /**
+     * @var string|null
+     */
     protected $fanticketImage;
 
+    /**
+     * @var float|null
+     */
     protected $maxPrice;
 
+    /**
+     * @var float|null
+     */
     protected $minPrice;
 
+    /**
+     * @var int
+     */
     protected $ranking;
 
+    /**
+     * @var string|null
+     */
     protected $searchText;
 
     // Accessors
@@ -95,7 +155,6 @@ class EventSerie
     /**
      * @return array
      * @see $artists
-     *
      */
     public function getArtists(): array
     {
@@ -115,176 +174,169 @@ class EventSerie
     }
 
     /**
-     * @return mixed
+     * @return string|null
      * @see $artistRating
-     *
      */
-    public function getArtistRating()
+    public function getArtistRating(): ?string
     {
         return $this->artistRating;
     }
 
     /**
-     * @param mixed $artistRating
+     * @param string|null $artistRating
      * @return EventSerie
      * @see $artistRating
-     *
      */
-    public function setArtistRating($artistRating)
+    public function setArtistRating(?string $artistRating): EventSerie
     {
         $this->artistRating = $artistRating;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string|null
      * @see $esBegin
-     *
      */
-    public function getEsBegin()
+    public function getEsBegin(): ?string
     {
         return $this->esBegin;
     }
 
     /**
-     * @param mixed $esBegin
+     * @param string|null $esBegin
      * @return EventSerie
      * @see $esBegin
      *
      */
-    public function setEsBegin($esBegin)
+    public function setEsBegin(?string $esBegin): EventSerie
     {
         $this->esBegin = $esBegin;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return array
      * @see $esCategories
      *
      */
-    public function getEsCategories()
+    public function getEsCategories(): array
     {
         return $this->esCategories;
     }
 
     /**
-     * @param mixed $esCategories
+     * @param array $esCategories
      * @return EventSerie
      * @see $esCategories
-     *
      */
-    public function setEsCategories($esCategories)
+    public function setEsCategories(array $esCategories): EventSerie
     {
         $this->esCategories = $esCategories;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string|null
      * @see $esEnd
      *
      */
-    public function getEsEnd()
+    public function getEsEnd(): ?string
     {
         return $this->esEnd;
     }
 
     /**
-     * @param mixed $esEnd
+     * @param string|null $esEnd
      * @return EventSerie
      * @see $esEnd
-     *
      */
-    public function setEsEnd($esEnd)
+    public function setEsEnd(?string $esEnd): EventSerie
     {
         $this->esEnd = $esEnd;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return int|null
      * @see $esId
      *
      */
-    public function getEsId()
+    public function getEsId(): ?int
     {
         return $this->esId;
     }
 
     /**
-     * @param mixed $esId
+     * @param int|null $esId
      * @return EventSerie
      * @see $esId
      *
      */
-    public function setEsId($esId)
+    public function setEsId(?int $esId): EventSerie
     {
         $this->esId = $esId;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string|null
      * @see $esInfo
      *
      */
-    public function getEsInfo()
+    public function getEsInfo(): ?string
     {
         return $this->esInfo;
     }
 
     /**
-     * @param mixed $esInfo
+     * @param string|null $esInfo
      * @return EventSerie
      * @see $esInfo
      *
      */
-    public function setEsInfo($esInfo)
+    public function setEsInfo(?string $esInfo): EventSerie
     {
         $this->esInfo = $esInfo;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string|null
      * @see $esLink
-     *
      */
-    public function getEsLink()
+    public function getEsLink(): ?string
     {
         return $this->esLink;
     }
 
     /**
-     * @param mixed $esLink
+     * @param string|null $esLink
      * @return EventSerie
      * @see $esLink
-     *
      */
-    public function setEsLink($esLink)
+    public function setEsLink(?string $esLink): EventSerie
     {
         $this->esLink = $esLink;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string|null
      * @see $esName
      *
      */
-    public function getEsName()
+    public function getEsName(): ?string
     {
         return $this->esName;
     }
 
     /**
-     * @param mixed $esName
+     * @param string|null $esName
      * @return EventSerie
      * @see $esName
      *
      */
-    public function setEsName($esName)
+    public function setEsName(?string $esName): EventSerie
     {
         $this->esName = $esName;
         return $this;
@@ -313,44 +365,43 @@ class EventSerie
     }
 
     /**
-     * @return mixed
+     * @return string|null
      * @see $esPictureBig
      *
      */
-    public function getEsPictureBig()
+    public function getEsPictureBig(): ?string
     {
         return $this->esPictureBig;
     }
 
     /**
-     * @param mixed $esPictureBig
+     * @param string|null $esPictureBig
      * @return EventSerie
      * @see $esPictureBig
-     *
      */
-    public function setEsPictureBig($esPictureBig)
+    public function setEsPictureBig(?string $esPictureBig): EventSerie
     {
         $this->esPictureBig = $esPictureBig;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string|null
      * @see $esPictureSmall
      *
      */
-    public function getEsPictureSmall()
+    public function getEsPictureSmall(): ?string
     {
         return $this->esPictureSmall;
     }
 
     /**
-     * @param mixed $esPictureSmall
+     * @param string|null $esPictureSmall
      * @return EventSerie
      * @see $esPictureSmall
      *
      */
-    public function setEsPictureSmall($esPictureSmall)
+    public function setEsPictureSmall(?string $esPictureSmall): EventSerie
     {
         $this->esPictureSmall = $esPictureSmall;
         return $this;
@@ -378,22 +429,20 @@ class EventSerie
     }
 
     /**
-     * @return mixed
+     * @return int|null
      * @see $esTopTen
-     *
      */
-    public function getEsTopTen()
+    public function getEsTopTen(): ?int
     {
         return $this->esTopTen;
     }
 
     /**
-     * @param mixed $esTopTen
+     * @param int|null $esTopTen
      * @return EventSerie
      * @see $esTopTen
-     *
      */
-    public function setEsTopTen($esTopTen)
+    public function setEsTopTen(?int $esTopTen): EventSerie
     {
         $this->esTopTen = $esTopTen;
         return $this;
@@ -422,11 +471,10 @@ class EventSerie
     }
 
     /**
-     * @return mixed
+     * @return string|null
      * @see $evoLink
-     *
      */
-    public function getEvoLink()
+    public function getEvoLink(): ?string
     {
         return $this->evoLink;
     }
@@ -435,141 +483,131 @@ class EventSerie
      * @param mixed $evoLink
      * @return EventSerie
      * @see $evoLink
-     *
      */
-    public function setEvoLink($evoLink)
+    public function setEvoLink($evoLink): EventSerie
     {
         $this->evoLink = $evoLink;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return bool|null
      * @see $fanticket
-     *
      */
-    public function getFanticket()
+    public function getFanticket(): ?bool
     {
         return $this->fanticket;
     }
 
     /**
-     * @param mixed $fanticket
+     * @param bool|null $fanticket
      * @return EventSerie
      * @see $fanticket
-     *
      */
-    public function setFanticket($fanticket)
+    public function setFanticket(?bool $fanticket): EventSerie
     {
         $this->fanticket = $fanticket;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string|null
      * @see $fanticketImage
-     *
      */
-    public function getFanticketImage()
+    public function getFanticketImage(): ?string
     {
         return $this->fanticketImage;
     }
 
     /**
-     * @param mixed $fanticketImage
+     * @param string|null $fanticketImage
      * @return EventSerie
      * @see $fanticketImage
-     *
      */
-    public function setFanticketImage($fanticketImage)
+    public function setFanticketImage(?string $fanticketImage): EventSerie
     {
         $this->fanticketImage = $fanticketImage;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string|null
      * @see $maxPrice
-     *
      */
-    public function getMaxPrice()
+    public function getMaxPrice(): ?string
     {
         return $this->maxPrice;
     }
 
     /**
-     * @param mixed $maxPrice
+     * @param string|null $maxPrice
      * @return EventSerie
      * @see $maxPrice
      *
      */
-    public function setMaxPrice($maxPrice)
+    public function setMaxPrice(?string $maxPrice): EventSerie
     {
         $this->maxPrice = $maxPrice;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string|null
      * @see $minPrice
      *
      */
-    public function getMinPrice()
+    public function getMinPrice(): ?string
     {
         return $this->minPrice;
     }
 
     /**
-     * @param mixed $minPrice
+     * @param string|null $minPrice
      * @return EventSerie
      * @see $minPrice
-     *
      */
-    public function setMinPrice($minPrice)
+    public function setMinPrice(?string $minPrice): EventSerie
     {
         $this->minPrice = $minPrice;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return int|null
      * @see $ranking
-     *
      */
-    public function getRanking()
+    public function getRanking(): ?int
     {
         return $this->ranking;
     }
 
     /**
-     * @param mixed $ranking
+     * @param int|null $ranking
      * @return EventSerie
      * @see $ranking
-     *
      */
-    public function setRanking($ranking)
+    public function setRanking(?int $ranking): EventSerie
     {
         $this->ranking = $ranking;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string|null
      * @see $searchText
      *
      */
-    public function getSearchText()
+    public function getSearchText(): ?string
     {
         return $this->searchText;
     }
 
     /**
-     * @param mixed $searchText
+     * @param string|null $searchText
      * @return EventSerie
      * @see $searchText
-     *
      */
-    public function setSearchText($searchText)
+    public function setSearchText(?string $searchText): EventSerie
     {
         $this->searchText = $searchText;
         return $this;
@@ -577,6 +615,10 @@ class EventSerie
 
     // Constructor
 
+    /**
+     * EventSerie constructor.
+     * @param $object
+     */
     public function __construct($object)
     {
         $this->processObject($object);
@@ -584,9 +626,12 @@ class EventSerie
 
     // Other functionality
 
+    /**
+     * @param $object
+     */
     public function processObject($object)
     {
-        if ($object->artists) {
+        if ($object->artists ?? null) {
             $this->setArtists(
                 $this->processArtists($object->artists)
             );
@@ -594,9 +639,13 @@ class EventSerie
 
         $this->setArtistRating($object->artistRating ?? null);
         $this->setEsBegin($object->esBegin ?? null);
-        $this->setEsCategories(
-            $this->processEsCategories($object->esCategories)
-        );
+
+        if ($object->esCategories ?? null) {
+            $this->setEsCategories(
+                $this->processEsCategories($object->esCategories)
+            );
+        }
+
         $this->SetEsEnd($object->esEnd ?? null);
         $this->setEsId($object->esId ?? null);
         $this->setEsInfo($object->esInfo ?? null);
@@ -608,7 +657,7 @@ class EventSerie
         $this->setEsText($object->esText ?? null);
         $this->setEsTopTen($object->esTopTen ?? null);
 
-        if ($object->events) {
+        if ($object->events ?? null) {
             $this->setEvents(
                 $this->processEvents($object->events)
             );
@@ -623,7 +672,10 @@ class EventSerie
         $this->setSearchText($object->searchText ?? null);
     }
 
-    public function getPostMetaData()
+    /**
+     * @return array
+     */
+    public function getPostMetaData(): array
     {
         $properties = get_object_vars($this);
 
@@ -631,13 +683,6 @@ class EventSerie
         unset($properties['artists']);
         unset($properties['esCategories']);
         unset($properties['events']);;
-
-        // convert arrays
-        foreach ($properties as $key => $property) {
-            if (is_array($property)) {
-                $properties[$key] = implode(',', $property);
-            }
-        }
 
         return $properties;
     }
@@ -648,7 +693,7 @@ class EventSerie
      * @param $feed_artists
      * @return array
      */
-    protected function processArtists($feed_artists)
+    protected function processArtists($feed_artists): array
     {
         $processed_artists = [];
 
@@ -665,7 +710,7 @@ class EventSerie
      * @param $feed_es_categories
      * @return array
      */
-    protected function processEsCategories($feed_es_categories)
+    protected function processEsCategories($feed_es_categories): array
     {
         $processed_es_categories = [];
 
@@ -682,7 +727,7 @@ class EventSerie
      * @param $feed_events
      * @return array
      */
-    protected function processEvents($feed_events)
+    protected function processEvents($feed_events): array
     {
         $processed_events = [];
 

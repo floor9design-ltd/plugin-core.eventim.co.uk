@@ -1,8 +1,8 @@
 <?php
 /**
- * EsCategoryTest.php
+ * ArtistTest.php
  *
- * EsCategoryTest class
+ * ArtistTest class
  *
  * php 7.3+
  *
@@ -21,15 +21,15 @@
 
 namespace Floor9design\Eventim\PluginCore\Tests\Unit;
 
-use Floor9design\Eventim\PluginCore\Models\EsCategory;
+use Floor9design\Eventim\PluginCore\Models\Artist;
 use Floor9design\Eventim\PluginCore\Tests\BaseTestCase;
 use Floor9design\TestDataGenerator\GeneratorException;
 use Floor9design\TestingTools\Traits\AccessorTesterTrait;
 
 /**
- * EsCategoryTest
+ * ArtistTest
  *
- * Tests the EsCategory class.
+ * Tests the Artist class.
  *
  * @category  None
  * @package   Floor9design\Eventim\PluginCore\Tests\Unit
@@ -43,7 +43,7 @@ use Floor9design\TestingTools\Traits\AccessorTesterTrait;
  * @see       \Floor9design\Eventim\PluginCore\Models\Event
  * @since     File available since Release 1.0
  */
-class EsCategoryTest extends BaseTestCase
+class ArtistTest extends BaseTestCase
 {
     use AccessorTesterTrait;
 
@@ -53,10 +53,15 @@ class EsCategoryTest extends BaseTestCase
      */
     public function testConstructor()
     {
-        $es_category_array = $this->createTestEsCategoryArray();
-        $es_category = new EsCategory((object)$es_category_array);
+        $test_object_array = $this->createTestArtistArray();
+        $price_category = new Artist((object)$test_object_array);
 
-        $this->assertEquals($es_category_array['category'], $es_category->getCategory());
+        $this->assertEquals($test_object_array['artistId'], $price_category->getArtistId());
+        $this->assertEquals($test_object_array['artistName'], $price_category->getArtistName());
+        $this->assertEquals($test_object_array['extArtistId'], $price_category->getExtArtistId());
+        $this->assertEquals($test_object_array['extArtistId2'], $price_category->getExtArtistId2());
+        $this->assertEquals($test_object_array['extArtistId3'], $price_category->getExtArtistId3());
+        $this->assertEquals($test_object_array['evoLink'], $price_category->getEvoLink());
     }
 
     /**
@@ -66,13 +71,25 @@ class EsCategoryTest extends BaseTestCase
      */
     public function testBasicAccessors()
     {
-        $es_category_array = $this->createTestEsCategoryArray();
-        $es_category = new EsCategory((object)$es_category_array);
+        $test_object_array = $this->createTestArtistArray();
+
+        // __construct automatically sets all properties
+        $price_category = new Artist((object)$test_object_array);
 
         $strings = [
-            'category' => []
+            'artistName' => [],
+            'evoLink' => []
         ];
-        $this->accessorTestStrings($strings, $es_category);
+        $this->accessorTestStrings($strings, $price_category);
+
+        $integers = [
+            'artistId' => [],
+            'extArtistId' => [],
+            'extArtistId2' => [],
+            'extArtistId3' => [],
+        ];
+        $this->accessorTestIntegers($integers, $price_category);
     }
+
 }
 

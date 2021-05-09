@@ -83,7 +83,7 @@ class EsCategory
     /**
      * @param $object
      */
-    public function processObject($object)
+    public function processObject($object): void
     {
         $this->setCategory($object->category ?? null);
     }

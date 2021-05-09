@@ -39,7 +39,6 @@ interface EventFeedInterface
     /**
      * Process an event feed
      *
-     * @param string $json
      * @return bool True for successful
      */
     public function processFeed(): bool;
