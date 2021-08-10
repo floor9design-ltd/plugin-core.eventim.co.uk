@@ -1370,6 +1370,19 @@ class Event
     }
 
     /**
+     * @return array
+     */
+    public function getPostMetaData(): array
+    {
+        $properties = get_object_vars($this);
+
+        // don't process the children : they're dealt with elsewhere
+        unset($properties['priceCategories']);;
+
+        return $properties;
+    }
+
+    /**
      * Returns an array of meta data elements
      *
      * Used to smart-convert the object into a dumb array; useful for views/templates
