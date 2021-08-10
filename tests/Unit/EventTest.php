@@ -125,6 +125,10 @@ class EventTest extends BaseTestCase
 
         // eventSeriesImage
         $this->assertEquals($event->getEventSerieImage(), $test_string);
+
+        // getPostMetaData
+        $post_meta_data = $event->getPostMetaData();
+        $this->assertArrayNotHasKey('priceCategories', $post_meta_data);
     }
 
     /**
