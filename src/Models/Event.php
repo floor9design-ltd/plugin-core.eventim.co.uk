@@ -1532,6 +1532,16 @@ class Event
     }
 
     /**
+     * @param int $event_status
+     * @return string[]
+     */
+    public static function eventStatusHumanise(int $event_status): array
+    {
+        $event = new Event([]);
+        return $event->eventStatusHumaniser($event_status);
+    }
+
+    /**
      * processes the priceCategories inside an Event into an array of priceCategory objects
      *
      * @param $feed_price_categories
@@ -1557,5 +1567,15 @@ class Event
     public function currencyConverter(float $unformatted): string
     {
         return number_format($unformatted, 2, '.', ',');
+    }
+
+    /**
+     * @param float $unformatted
+     * @return string
+     */
+    public static function currencyConvert(float $unformatted): string
+    {
+        $event = new Event([]);
+        return $event->currencyConverter($unformatted);
     }
 }

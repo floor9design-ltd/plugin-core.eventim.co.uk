@@ -50,6 +50,11 @@ abstract class EventFeed
     protected $feed;
 
     /**
+     * @var
+     */
+    protected $feed_url;
+
+    /**
      * @return array
      * @see $event_series
      *
@@ -90,6 +95,25 @@ abstract class EventFeed
     public function setFeed($feed): EventFeed
     {
         $this->feed = $feed;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     * @see $feed_url
+     */
+    public function getFeedUrl()
+    {
+        return $this->feed_url;
+    }
+
+    /**
+     * @param mixed $feed_url
+     * @return EventFeed
+     */
+    public function setFeedUrl($feed_url): EventFeed
+    {
+        $this->feed_url = $feed_url;
         return $this;
     }
 

@@ -247,6 +247,54 @@ class EventTest extends BaseTestCase
     }
 
     /**
+     * Tests Event::eventStatusHumanise()
+     */
+    public function testEventStatusHumanise()
+    {
+        $ids = [1, 2, 3, 4, 6, 7, 8, 14, 16];
+
+        foreach ($ids as $id) {
+            $response = Event::eventStatusHumanise($id);
+
+            // check array
+            $this->assertIsArray($response);
+
+            // check format of array
+            $keys = ['short', 'long', 'verbose', 'event_buyable'];
+            $this->assertEquals($keys, array_keys($response));
+        }
+
+        // Test bad statuses
+        $response = Event::eventStatusHumanise(100);
+        $bad_response = [
+            'short' => '',
+            'long' => '',
+            'verbose' => '',
+            'event_buyable' => false
+        ];
+
+        // check array
+        $this->assertIsArray($response);
+
+        // check format of array
+        $this->assertEquals($bad_response, $response);
+
+        $response = Event::eventStatusHumanise(0);
+        $bad_response = [
+            'short' => '',
+            'long' => '',
+            'verbose' => '',
+            'event_buyable' => false
+        ];
+
+        // check array
+        $this->assertIsArray($response);
+
+        // check format of array
+        $this->assertEquals($bad_response, $response);
+    }
+
+    /**
      * Tests Event::getEventStatusLookup(), Event::setEventStatusLookup()
      */
     public function testEventStatusLookupAccessors()
@@ -262,7 +310,7 @@ class EventTest extends BaseTestCase
     }
 
     /**
-     * Tests Event::getEventStatusLookup(), Event::setEventStatusLookup()
+     * Tests Event::currencyConverter()
      * @throws GeneratorException
      */
     public function testCurrencyConverter()
@@ -277,6 +325,20 @@ class EventTest extends BaseTestCase
 
         // test commas
         $this->assertEquals('12,345.00', $event->currencyConverter(12345));
+    }
+
+    /**
+     * Tests Event::currencyConvert()
+     */
+    public function testCurrencyConvert()
+    {
+        // test decimal places
+        $this->assertEquals('12.00', Event::currencyConvert(12.0));
+        $this->assertEquals('12.00', Event::currencyConvert(12));
+        $this->assertEquals('12.00', Event::currencyConvert(12.0000));
+
+        // test commas
+        $this->assertEquals('12,345.00', Event::currencyConvert(12345));
     }
 
     /**

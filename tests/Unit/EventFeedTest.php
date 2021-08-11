@@ -82,8 +82,11 @@ class EventFeedTest extends TestCase
 
         $event_feed = $this->generator->randomJson();
         $this->event_feed_mock->setFeed($event_feed);
-
         $this->assertEquals($this->event_feed_mock->getFeed(), $event_feed);
+
+        $feed_url = $this->generator->randomUrl();
+        $this->event_feed_mock->setFeedUrl($feed_url);
+        $this->assertEquals($this->event_feed_mock->getFeedUrl(), $feed_url);
     }
 
 }
