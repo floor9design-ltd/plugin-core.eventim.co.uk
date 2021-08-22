@@ -1,6 +1,6 @@
 # plugin-core.eventim.co.uk
 
-[![Latest Version](https://img.shields.io/github/v/release/floor9design-ltd/plugin-core.eventim.co.uk?include_prereleases&style=plastic)](https://github.com/floor9design-ltd/plugin-core.eventim.co.uk/releases)
+[![Latest Version](https://img.shields.io/github/v/release/floor9design-ltd/plugin-core.eventim.co.uk?style=plastic)](https://github.com/floor9design-ltd/plugin-core.eventim.co.uk/releases)
 [![Packagist](https://img.shields.io/packagist/v/floor9design/plugin-core.eventim.co.uk?style=plastic)](https://packagist.org/packages/floor9design/plugin-core.eventim.co.uk)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=plastic)](LICENCE.md)
 
