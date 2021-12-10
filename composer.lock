@@ -134,26 +134,26 @@
         },
         {
             "name": "floor9design/testing-tools",
-            "version": "1.3.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/floor9design-ltd/testing-tools.git",
-                "reference": "93a2956faeb3ba8ebe83f4527ff1e8394e66b48d"
+                "reference": "76300a6048e7224d5aa975d733ca028fc4537912"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/floor9design-ltd/testing-tools/zipball/93a2956faeb3ba8ebe83f4527ff1e8394e66b48d",
-                "reference": "93a2956faeb3ba8ebe83f4527ff1e8394e66b48d",
+                "url": "https://api.github.com/repos/floor9design-ltd/testing-tools/zipball/76300a6048e7224d5aa975d733ca028fc4537912",
+                "reference": "76300a6048e7224d5aa975d733ca028fc4537912",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "floor9design/test-data-generator": "*",
+                "floor9design/test-data-generator": "^1.3.4",
                 "php": ">=7.3"
             },
             "require-dev": {
                 "mockery/mockery": "dev-master",
-                "phpunit/phpunit": ">=9.0"
+                "phpunit/phpunit": "^9.0"
             },
             "type": "library",
             "autoload": {
@@ -182,9 +182,9 @@
             ],
             "support": {
                 "issues": "https://github.com/floor9design-ltd/testing-tools/issues",
-                "source": "https://github.com/floor9design-ltd/testing-tools/tree/1.3.0"
+                "source": "https://github.com/floor9design-ltd/testing-tools/tree/1.4.0"
             },
-            "time": "2021-05-08T12:30:49+00:00"
+            "time": "2021-12-09T18:18:31+00:00"
         },
         {
             "name": "hamcrest/hamcrest-php",
