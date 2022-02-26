@@ -277,7 +277,6 @@ class Event
     /**
      * @return array|null
      * @see $artistIds
-     *
      */
     public function getArtistIds(): ?array
     {
@@ -298,7 +297,6 @@ class Event
     /**
      * @return string|null
      * @see $artistNames
-     *
      */
     public function getArtistNames(): ?string
     {
@@ -309,7 +307,6 @@ class Event
      * @param string|null $artistNames
      * @return Event
      * @see $artistNames
-     *
      */
     public function setArtistNames(?string $artistNames): Event
     {
@@ -320,7 +317,6 @@ class Event
     /**
      * @return string|null
      * @see $dateRangeEnd
-     *
      */
     public function getDateRangeEnd(): ?string
     {
@@ -331,7 +327,6 @@ class Event
      * @param string|null $dateRangeEnd
      * @return Event
      * @see $dateRangeEnd
-     *
      */
     public function setDateRangeEnd($dateRangeEnd): Event
     {
@@ -342,7 +337,6 @@ class Event
     /**
      * @return string|null
      * @see $dateRangeStart
-     *
      */
     public function getDateRangeStart(): ?string
     {
@@ -353,7 +347,6 @@ class Event
      * @param string|null $dateRangeStart
      * @return Event
      * @see $dateRangeStart
-     *
      */
     public function setDateRangeStart(?string $dateRangeStart): Event
     {
@@ -364,7 +357,6 @@ class Event
     /**
      * @return bool|null
      * @see $deliverable
-     *
      */
     public function getDeliverable(): ?bool
     {
@@ -385,7 +377,6 @@ class Event
     /**
      * @return string|null
      * @see $eventCity
-     *
      */
     public function getEventCity(): ?string
     {
@@ -406,7 +397,6 @@ class Event
     /**
      * @return int|null
      * @see $eventCityId
-     *
      */
     public function getEventCityId(): ?int
     {
@@ -427,7 +417,6 @@ class Event
     /**
      * @return string|null
      * @see $eventCountry
-     *
      */
     public function getEventCountry(): ?string
     {
@@ -438,7 +427,6 @@ class Event
      * @param string|null $eventCountry
      * @return Event
      * @see $eventCountry
-     *
      */
     public function setEventCountry($eventCountry): Event
     {
@@ -449,7 +437,6 @@ class Event
     /**
      * @return string|null
      * @see $eventDate
-     *
      */
     public function getEventDate(): ?string
     {
@@ -470,7 +457,6 @@ class Event
     /**
      * @return string|null
      * @see $eventDateIso8601
-     *
      */
     public function getEventDateIso8601(): ?string
     {
@@ -481,7 +467,6 @@ class Event
      * @param string|null $eventDateIso8601
      * @return Event
      * @see $eventDateIso8601
-     *
      */
     public function setEventDateIso8601($eventDateIso8601): Event
     {
@@ -492,7 +477,6 @@ class Event
     /**
      * @return int|null
      * @see $eventId
-     *
      */
     public function getEventId(): ?int
     {
@@ -513,7 +497,6 @@ class Event
     /**
      * @return string|null
      * @see $eventLink
-     *
      */
     public function getEventLink(): ?string
     {
@@ -534,7 +517,6 @@ class Event
     /**
      * @return string|null
      * @see $eventName
-     *
      */
     public function getEventName(): ?string
     {
@@ -555,7 +537,6 @@ class Event
     /**
      * @return string|null
      * @see $eventProvince
-     *
      */
     public function getEventProvince(): ?string
     {
@@ -576,7 +557,6 @@ class Event
     /**
      * @return string|null
      * @see $eventSearchText
-     *
      */
     public function getEventSearchText(): ?string
     {
@@ -597,7 +577,6 @@ class Event
     /**
      * @return EventSerie|null
      * @see $event_serie
-     *
      */
     public function getEventSerie(): ?EventSerie
     {
@@ -618,7 +597,6 @@ class Event
     /**
      * @return int|null
      * @see $eventStatus
-     *
      */
     public function getEventStatus(): ?int
     {
@@ -646,7 +624,6 @@ class Event
     /**
      * @return array|null
      * @see $eventStatusLookup
-     *
      */
     public function getEventStatusLookup(): ?array
     {
@@ -667,7 +644,6 @@ class Event
     /**
      * @return string|null
      * @see $eventStreet
-     *
      */
     public function getEventStreet(): ?string
     {
@@ -688,7 +664,6 @@ class Event
     /**
      * @return string|null
      * @see $eventTime
-     *
      */
     public function getEventTime(): ?string
     {
@@ -709,7 +684,6 @@ class Event
     /**
      * @return int|null
      * @see $eventType
-     *
      */
     public function getEventType(): ?int
     {
@@ -730,7 +704,6 @@ class Event
     /**
      * @return string|null
      * @see $eventVenue
-     *
      */
     public function getEventVenue(): ?string
     {
@@ -751,7 +724,6 @@ class Event
     /**
      * @return int|null
      * @see $eventVenueGroupId
-     *
      */
     public function getEventVenueGroupId(): ?int
     {
@@ -772,7 +744,6 @@ class Event
     /**
      * @return int|null
      * @see $eventVenueId
-     *
      */
     public function getEventVenueId(): ?int
     {
@@ -793,7 +764,6 @@ class Event
     /**
      * @return string|null
      * @see $eventZip
-     *
      */
     public function getEventZip(): ?string
     {
@@ -814,7 +784,6 @@ class Event
     /**
      * @return string|null
      * @see $evoLink
-     *
      */
     public function getEvoLink(): ?string
     {
@@ -835,7 +804,6 @@ class Event
     /**
      * @return string|null
      * @see $fanticketImage
-     *
      */
     public function getFanticketImage(): ?string
     {
@@ -856,7 +824,6 @@ class Event
     /**
      * @return array|null
      * @see $includedEventIDs
-     *
      */
     public function getIncludedEventIDs(): ?array
     {
@@ -877,7 +844,6 @@ class Event
     /**
      * @return string|null
      * @see $linkEventUrl
-     *
      */
     public function getLinkEventUrl(): ?string
     {
@@ -898,7 +864,6 @@ class Event
     /**
      * @return float|null
      * @see $maxPrice
-     *
      */
     public function getMaxPrice(): ?float
     {
@@ -924,13 +889,14 @@ class Event
     }
 
     /**
+     * @param string|null $prefix
+     * @param string|null $suffix
      * @return string|null
      * @see $maxPriceFormatted
-     *
      */
-    public function getMaxPriceFormatted(): ?string
+    public function getMaxPriceFormatted(?string $prefix = '&pound;', ?string $suffix = null): ?string
     {
-        return $this->maxPriceFormatted;
+        return ($prefix ?? '') . $this->maxPriceFormatted . ($suffix ?? '');
     }
 
     /**
@@ -947,7 +913,6 @@ class Event
     /**
      * @return float|null
      * @see $minPrice
-     *
      */
     public function getMinPrice(): ?float
     {
@@ -973,13 +938,14 @@ class Event
     }
 
     /**
+     * @param string|null $prefix
+     * @param string|null $suffix
      * @return string|null
      * @see $minPriceFormatted
-     *
      */
-    public function getMinPriceFormatted(): ?float
+    public function getMinPriceFormatted(?string $prefix = '&pound;', ?string $suffix = ''): ?string
     {
-        return $this->minPriceFormatted;
+        return $prefix . $this->minPriceFormatted . $suffix;
     }
 
     /**
@@ -996,7 +962,6 @@ class Event
     /**
      * @return int|null
      * @see $numberOfEvents
-     *
      */
     public function getNumberOfEvents(): ?int
     {
@@ -1017,7 +982,6 @@ class Event
     /**
      * @return int|null
      * @see $numberOfVenues
-     *
      */
     public function getNumberOfVenues(): ?int
     {
@@ -1038,7 +1002,6 @@ class Event
     /**
      * @return bool|null
      * @see $onlyBookableInSP
-     *
      */
     public function getOnlyBookableInSP(): ?bool
     {
@@ -1059,7 +1022,6 @@ class Event
     /**
      * @return string|null
      * @see $onsaleDate
-     *
      */
     public function getOnsaleDate(): ?string
     {
@@ -1080,7 +1042,6 @@ class Event
     /**
      * @return string|null
      * @see $onsaleTime
-     *
      */
     public function getOnsaleTime(): ?string
     {
@@ -1102,7 +1063,6 @@ class Event
      * @return string|null
      * @see $overrideImage
      * @see getImage()
-     *
      */
     public function getOverrideImage(): ?string
     {
@@ -1113,7 +1073,6 @@ class Event
      * @param string $overrideImage
      * @return Event
      * @see $fanticketImage
-     *
      */
     public function setOverrideImage(?string $overrideImage): Event
     {
@@ -1124,7 +1083,6 @@ class Event
     /**
      * @return array
      * @see $priceCategories
-     *
      */
     public function getPriceCategories(): array
     {
@@ -1135,7 +1093,6 @@ class Event
      * @param array $priceCategories
      * @return Event
      * @see $priceCategories
-     *
      */
     public function setPriceCategories(array $priceCategories): Event
     {
@@ -1146,7 +1103,6 @@ class Event
     /**
      * @return int|null
      * @see $promoterId
-     *
      */
     public function getPromoterId(): ?int
     {
@@ -1167,7 +1123,6 @@ class Event
     /**
      * @return bool|null
      * @see $ticketdirect
-     *
      */
     public function getTicketdirect(): ?bool
     {
@@ -1188,7 +1143,6 @@ class Event
     /**
      * @return int|null
      * @see $ticketStock
-     *
      */
     public function getTicketStock(): ?int
     {
@@ -1209,7 +1163,6 @@ class Event
     /**
      * @return bool|null
      * @see $willcall
-     *
      */
     public function getWillcall(): ?bool
     {
@@ -1230,7 +1183,6 @@ class Event
     /**
      * @return float|null
      * @see $venueLatitude
-     *
      */
     public function getVenueLatitude(): ?float
     {
@@ -1251,7 +1203,6 @@ class Event
     /**
      * @return float|null
      * @see $venueLongitude
-     *
      */
     public function getVenueLongitude(): ?float
     {
@@ -1290,7 +1241,6 @@ class Event
      * @see $event_series
      * @see getEventSerie()
      * @see EventSerie::getEsPicture()
-     *
      */
     public function getEventSerieImage()
     {
@@ -1415,7 +1365,6 @@ class Event
      * @return string
      * @see $overrideImage
      * @see $eventSeriesImage
-     *
      */
     public function getImage(string $default = ''): string
     {

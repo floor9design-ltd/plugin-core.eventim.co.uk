@@ -351,10 +351,18 @@ class EventTest extends BaseTestCase
         $event = new Event((object)$test_event_array);
 
         $event->setMaxPrice(12);
-        $this->assertEquals('12.00', $event->getMaxPriceFormatted());
+        $this->assertEquals('&pound;12.00', $event->getMaxPriceFormatted());
+        $event->setMaxPrice(12);
+        $this->assertEquals('12.00', $event->getMaxPriceFormatted(null));
+        $event->setMaxPrice(12);
+        $this->assertEquals('12.00 &euro;', $event->getMaxPriceFormatted(null, ' &euro;'));
 
         $event->setMinPrice(12);
-        $this->assertEquals('12.00', $event->getMinPriceFormatted());
+        $this->assertEquals('&pound;12.00', $event->getMinPriceFormatted());
+        $event->setMinPrice(12);
+        $this->assertEquals('12.00', $event->getMinPriceFormatted(null));
+        $event->setMinPrice(12);
+        $this->assertEquals('12.00 &euro;', $event->getMinPriceFormatted(null, ' &euro;'));
     }
 
     /**
