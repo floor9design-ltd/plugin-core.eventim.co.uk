@@ -11,10 +11,10 @@
  * @author    Rick Morice <rick@floor9design.com>
  * @copyright Floor9design Ltd
  * @license MIT
- * @version   1.0
+ * @version   1.3
  * @link      https://github.com/floor9design-ltd/plugin-core.eventim.co.uk
  * @link      https://floor9design.com
- * @version   1.0
+ * @version   1.3
  * @since     File available since Release 1.0
  *
  */
@@ -39,10 +39,10 @@ use PHPUnit\Framework\TestCase;
  * @author    Rick Morice <rick@floor9design.com>
  * @copyright Floor9design Ltd
  * @license MIT
- * @version   1.0
+ * @version   1.3
  * @link      https://github.com/floor9design-ltd/plugin-core.eventim.co.uk
  * @link      https://floor9design.com
- * @version   1.0
+ * @version   1.3
  * @see       \Floor9design\Eventim\PluginCore\Models\Event
  * @since     File available since Release 1.0
  */

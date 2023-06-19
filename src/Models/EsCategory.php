@@ -11,7 +11,7 @@
  * @author    Rick Morice <rick@floor9design.com>
  * @copyright Floor9design Ltd
  * @license   MIT
- * @version   1.0
+ * @version   1.3
  * @link      https://github.com/floor9design-ltd/plugin-core.eventim.co.uk
  * @link      https://floor9design.com
  * @since     File available since Release 1.0
@@ -30,7 +30,7 @@ namespace Floor9design\Eventim\PluginCore\Models;
  * @author    Rick Morice <rick@floor9design.com>
  * @copyright Floor9design Ltd
  * @license   MIT
- * @version   1.0
+ * @version   1.3
  * @link      https://github.com/floor9design-ltd/plugin-core.eventim.co.uk
  * @link      https://floor9design.com
  * @see       \Floor9design\Eventim\PluginCore\Models\EventFeed
