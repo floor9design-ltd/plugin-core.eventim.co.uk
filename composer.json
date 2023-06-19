@@ -21,8 +21,8 @@
         "php" : ">=7.3"
     },
     "require-dev": {
-        "phpunit/phpunit": ">=8.0",
-        "mockery/mockery": "dev-master",
+        "phpunit/phpunit": "^10.0",
+        "mockery/mockery": "^1.6",
         "floor9design/testing-tools": "*",
         "floor9design/test-data-generator" : "*"
     },
